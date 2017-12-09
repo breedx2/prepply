@@ -16,5 +16,8 @@
     "lodash": "^4.17.4",
     "marked": "^0.3.7",
     "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "chokidar": "^1.7.0"
   }
 }
