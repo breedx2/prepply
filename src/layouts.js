@@ -12,11 +12,15 @@ function load(layoutsDir){
   const compiled = templateFiles.map(t => ejs.compile(fs.readFileSync(t).toString()))
   const templates = _.zipObject(layoutNames, compiled);
   return {
-    render: (layoutName, data) => {
-      const template = _.has(templates, layoutName) ? templates[layoutName] : templates['page'];
-      return template(data);
+    render: (layoutName, frontMatter, content) => {
+      const template = templates[layoutName];
+      if(!template){
+        console.warn(`Unknown layout: ${layoutName}`);
+        return `<html><body>unknown template ${layoutName} for ${frontMatter.permalink}</body></html>`;
+      }
+      return template(Object.assign({}, frontMatter, { content: content }));
     }
-  }
+  };
 }
 
 module.exports = {

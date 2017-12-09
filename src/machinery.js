@@ -5,6 +5,7 @@ const glob = require('glob');
 const fs = require('fs-extra');
 const frontMatter = require('front-matter');
 const path = require('path');
+const marked = require('marked');
 const layoutsLoader = require('./layouts');
 const templates = layoutsLoader.load(`${__dirname}/../layouts`);
 
@@ -37,7 +38,8 @@ function processFile(options, filename){
     const fm = frontMatter(fileData.toString());
     // console.log(fm);
     const layoutName = fm.attributes.layout || 'page';
-    const rendered = templates.render(layoutName, fm.attributes);
+    const htmlContent = marked(fm.body);
+    const rendered = templates.render(layoutName, fm.attributes, htmlContent);
     const outFile = buildOutfilename(options, fm, filename);
     fs.ensureFileSync(outFile);
     fs.writeFileSync(outFile, rendered);

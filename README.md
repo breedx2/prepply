@@ -9,4 +9,22 @@ and want to reinvent everything always.
 
 # usage
 
+```
+$ node prepply/prepply.js --indir site --outdir out
+```
+
 # config file
+
+
+# todo:
+
+* make builder handle single files too
+* server
+* server reload/recompile
+* timestamps files after creation
+* blogs paging
+* blogs tags (+ paging)
+* bring over fonts (from jekyl branch?)
+* make a theme
+* fix up duplicated page headings (title)
+* ...
