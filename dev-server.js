@@ -3,11 +3,16 @@
 const _ = require('lodash');
 const minimist = require('minimist');
 const path = require('path');
-const child_process = require('child_process');
+const reload = require('reload');
+const express = require('express');
+const http = require('http');
 const chokidar = require('chokidar');
+const fs = require('fs');
+const interceptor = require('express-interceptor');
 const machinery = require('./src/machinery');
 
 // Development server - uses reload for http and runs prepply
+const PORT = 8080;
 
 function usage(){
   console.log(`
@@ -35,32 +40,68 @@ function setDefaults(args){
   return _.assign(defaults, args);
 }
 
+function reloadClients(reloadServer){
+  return () => {
+    console.log('reloading server');
+    reloadServer.reload();
+  };
+}
+
 async function run(args){
   console.log('Running initial site prep...');
   await runMachinery(args);
-  console.log('Starting "reload" http server in background.');
-  const cmd = `$(npm bin)/reload -d ${args.outdir}`;
-  const reloadServer = child_process.exec(cmd);
-  reloadServer.stdout.pipe(process.stdout);
-  process.on('exit', () => {
-    console.log('Shutting down reload http server.')
-    reloadServer.kill();
-  });
-
+  const reloadServer = startServer(args);
   chokidar.watch(args.indir).on('change', path => {
     console.log(`Changed ${path}`);
     const machineryArgs = _.assign({}, args, { files: [path]});
-    runMachinery(machineryArgs);
+    runMachinery(machineryArgs).then(reloadClients(reloadServer));
   });
   const layoutsDir = path.resolve(__dirname, 'layouts');
   chokidar.watch(layoutsDir).on('change', path => {
     console.log(`Change in templates, big rebuild...`);
-    runMachinery(args);
+    runMachinery(args).then(reloadClients(reloadServer));
   });
 }
 
 async function runMachinery(args){
   return await machinery.run(Object.assign({}, args, {noclean: true}));
+}
+
+function startServer(args){
+  console.log('Starting http server...');
+  const app = express();
+
+  app.use(function(req, res, next) {
+    if (req.path.replace(/\/$/, '').match(/\/\w+$/)) {
+      const file = `${args.outdir}${req.path.replace(/\/$/, '')}.html`;
+      return fs.exists(file, exists => {
+        console.log(`${req.url} => ${req.url}.html`);
+        if (exists) req.url += '.html';
+        next();
+      });
+    }
+    next();
+  });
+  const reloadInjector = interceptor((req, res) => ({
+      // Only HTML responses will be intercepted
+      isInterceptable: function(){
+        return /text\/html/.test(res.get('Content-Type'));
+      },
+      // Appends a paragraph at the end of the response body
+      intercept: function(body, send) {
+        console.log(`Inject reload js ${req.url}`);
+        const result = body.replace('<body>', '<body>\n<script src="/reload/reload.js"></script>');
+        send(result);
+      }
+  }));
+  app.use(reloadInjector);
+  app.use(express.static(args.outdir));
+  const server = http.createServer(app);
+  const reloadServer = reload(app, { verbose: true});  //reload pages when stuff changes on disk
+  server.listen(8080, () => {
+    console.log(`Web server listening on port ${PORT}`);
+  });
+  return reloadServer;
 }
 
 const inputArgs = require('minimist')(process.argv.slice(2));

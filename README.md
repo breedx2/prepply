@@ -7,10 +7,20 @@ That static site can be published....
 ...and it's like all the other static gen frameworks, except apparently I hate them all
 and want to reinvent everything always.
 
-# usage
+# build usage
+
+Builds the static site:
 
 ```
 $ node prepply/prepply.js --indir site --outdir out --clean
+```
+
+# dev server usage
+
+Runs a live-reload development server:
+
+```
+$ node prepply/dev-server.js --indir site --outdir out
 ```
 
 # config file
