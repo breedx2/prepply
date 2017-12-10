@@ -7,36 +7,40 @@ const frontMatter = require('front-matter');
 const path = require('path');
 const marked = require('marked');
 const layoutsLoader = require('./layouts');
-const templates = layoutsLoader.load(`${__dirname}/../layouts`);
 
 async function run(options){
   console.time('process');
-  emptyOutput(options);
+  emptyOutputDir(options);
   const files = findInputFiles(options);
   console.log(`Found ${files.length} input files...`);
-  files.forEach(f => processFile(options, f));
+  const templates = layoutsLoader.load(`${__dirname}/../layouts`);
+  console.log('post templates load');
+  files.forEach(f => processFile(options, templates, f));
   console.timeEnd('process');
 }
 
-function emptyOutput(options){
+function emptyOutputDir(options){
   if(options.noclean){
     console.log('Skipping output directory clean step...');
+    return;
   }
   console.log('Cleaning output directory...');
   fs.emptyDirSync(options.outdir);
 }
 
 function findInputFiles(options){
+  if(options.files){
+    return options.files;
+  }
   //TODO: Figure out if we can cache and not re-process shit
   return glob.sync(`${options.indir}/**`, { nodir: true });
 }
 
-function processFile(options, filename){
+function processFile(options, templates, filename){
   if(filename.endsWith('.md')){
     console.log(`Processing markdown ${filename}...`);
     const fileData = fs.readFileSync(filename);
     const fm = frontMatter(fileData.toString());
-    // console.log(fm);
     const layoutName = fm.attributes.layout || 'page';
     const htmlContent = marked(fm.body);
     const rendered = templates.render(layoutName, fm.attributes, htmlContent);

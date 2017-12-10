@@ -18,6 +18,7 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "chokidar": "^1.7.0"
+    "chokidar": "^1.7.0",
+    "reload": "^2.2.2"
   }
 }

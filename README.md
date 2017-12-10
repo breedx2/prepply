@@ -10,7 +10,7 @@ and want to reinvent everything always.
 # usage
 
 ```
-$ node prepply/prepply.js --indir site --outdir out
+$ node prepply/prepply.js --indir site --outdir out --clean
 ```
 
 # config file

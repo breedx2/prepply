@@ -46,15 +46,21 @@ async function run(args){
     console.log('Shutting down reload http server.')
     reloadServer.kill();
   });
+
   chokidar.watch(args.indir).on('change', path => {
     console.log(`Changed ${path}`);
-    //TODO: ONLY RUN ON CHANGED FILES YO
+    const machineryArgs = _.assign({}, args, { files: [path]});
+    runMachinery(machineryArgs);
+  });
+  const layoutsDir = path.resolve(__dirname, 'layouts');
+  chokidar.watch(layoutsDir).on('change', path => {
+    console.log(`Change in templates, big rebuild...`);
     runMachinery(args);
   });
 }
 
 async function runMachinery(args){
-  return await machinery.run(args);
+  return await machinery.run(Object.assign({}, args, {noclean: true}));
 }
 
 const inputArgs = require('minimist')(process.argv.slice(2));

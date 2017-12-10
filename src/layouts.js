@@ -15,7 +15,7 @@ function load(layoutsDir){
     render: (layoutName, frontMatter, content) => {
       const template = templates[layoutName];
       if(!template){
-        console.warn(`Unknown layout: ${layoutName}`);
+        console.log(`Warning: Unknown layout: ${layoutName}`);
         return `<html><body>unknown template ${layoutName} for ${frontMatter.permalink}</body></html>`;
       }
       return template(Object.assign({}, frontMatter, { content: content }));
