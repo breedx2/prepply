@@ -90,7 +90,6 @@ function startServer(args){
       // Appends a paragraph at the end of the response body
       intercept: function(body, send) {
         console.log(`Inject reload js ${req.url}`);
-        console.log(res.get('Content-Type'));
         const result = body.replace('<body>', '<body>\n<script src="/reload/reload.js"></script>');
         send(result);
       }

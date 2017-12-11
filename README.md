@@ -40,4 +40,5 @@ $ node prepply/dev-server.js --indir site --outdir out
 * training of marine - custom title with <br/> in it (needed)
 * school.md custom title (red)
 * fix linkpile
+* fix cowstick
 * ...
