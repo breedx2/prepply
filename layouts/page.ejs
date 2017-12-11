@@ -8,7 +8,7 @@
 <body>
   <div class="container">
     <%- include('./nav.ejs') %>
-    <h1><%= title %></h1>
+    <h1><%- typeof pagetitle == 'undefined' ? title : pagetitle %></h1>
 
     <%- content %>
   </div>
