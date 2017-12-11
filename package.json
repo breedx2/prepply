@@ -9,13 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "4.0.0-beta.2",
+    "jquery": "1.9.1",
+    "popper.js": "1.12.9",
     "ejs": "^2.5.7",
     "front-matter": "^2.3.0",
     "fs-extra": "^4.0.3",
     "glob": "^7.1.2",
     "lodash": "^4.17.4",
     "marked": "^0.3.7",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "node-sass": "^4.7.2"
   },
   "devDependencies": {
     "chokidar": "^1.7.0",

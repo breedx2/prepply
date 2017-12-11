@@ -8,8 +8,9 @@ const express = require('express');
 const http = require('http');
 const chokidar = require('chokidar');
 const fs = require('fs');
-const interceptor = require('express-interceptor');
-const machinery = require('./src/machinery');
+const watchers = require('./src/devserver/watchers');
+const machinery = require('./src/devserver/machinery');
+const reloadInjector = require('./src/devserver/reload-injector');
 
 // Development server - uses reload for http and runs prepply
 const PORT = 8080;
@@ -40,31 +41,11 @@ function setDefaults(args){
   return _.assign(defaults, args);
 }
 
-function reloadClients(reloadServer){
-  return () => {
-    console.log('reloading server');
-    reloadServer.reload();
-  };
-}
-
 async function run(args){
   console.log('Running initial site prep...');
-  await runMachinery(args);
+  await machinery(args);
   const reloadServer = startServer(args);
-  chokidar.watch(args.indir).on('change', path => {
-    console.log(`Changed ${path}`);
-    const machineryArgs = _.assign({}, args, { files: [path]});
-    runMachinery(machineryArgs).then(reloadClients(reloadServer));
-  });
-  const layoutsDir = path.resolve(__dirname, 'layouts');
-  chokidar.watch(layoutsDir).on('change', path => {
-    console.log(`Change in templates, big rebuild...`);
-    runMachinery(args).then(reloadClients(reloadServer));
-  });
-}
-
-async function runMachinery(args){
-  return await machinery.run(Object.assign({}, args, {noclean: true}));
+  watchers.configure(args, reloadServer);
 }
 
 function startServer(args){
@@ -82,18 +63,7 @@ function startServer(args){
     }
     next();
   });
-  const reloadInjector = interceptor((req, res) => ({
-      // Only HTML responses will be intercepted
-      isInterceptable: function(){
-        return (res.statusCode < 300) && /text\/html/.test(res.get('Content-Type'));
-      },
-      // Appends a paragraph at the end of the response body
-      intercept: function(body, send) {
-        console.log(`Inject reload js ${req.url}`);
-        const result = body.replace('<body>', '<body>\n<script src="/reload/reload.js"></script>');
-        send(result);
-      }
-  }));
+
   app.use(reloadInjector);
   app.use(express.static(args.outdir));
   const server = http.createServer(app);

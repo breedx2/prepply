@@ -29,6 +29,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 # todo:
 
 * timestamps files after creation
+* add --nowatch to devserver
 * blogs paging
 * blogs tags (+ paging)
 * bring over fonts (from jekyl branch?)
