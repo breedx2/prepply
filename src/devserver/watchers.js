@@ -7,19 +7,22 @@ const machinery = require('./machinery');
 const sasshole = require('../sasshole');
 
 function configure(args, reloadServer) {
+
+  const reload = reloadClients(reloadServer);
+
   chokidar.watch(args.indir).on('change', path => {
     console.log(`Changed ${path}`);
     const machineryArgs = _.assign({}, args, {
       files: [path]
     });
-    machinery(machineryArgs).then(reloadClients(reloadServer));
+    machinery(machineryArgs).then(reload);
   });
 
   //TODO: Don't hard-code a layout dir here (for others to make themes)
   const layoutsDir = path.resolve(__dirname, 'layouts');
   chokidar.watch(layoutsDir).on('change', path => {
     console.log(`Change in templates, big rebuild...`);
-    machinery(args).then(reloadClients(reloadServer));
+    machinery(args).then(reload);
   });
 
   //TODO: Don't hard-code scss dir here (for others to make themes)
@@ -27,7 +30,7 @@ function configure(args, reloadServer) {
   chokidar.watch(scss).on('change', path => {
     console.log(`scss change ${path}`);
     sasshole([path], args.outdir);
-    reloadClients(reloadServer)();
+    reload();
   });
 }
 
