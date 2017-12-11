@@ -9,7 +9,10 @@ function load(layoutsDir){
   console.log(`Loading all layouts from ${layoutsDir}`);
   const templateFiles = glob.sync(`${layoutsDir}/*.ejs`, { nodir: true });
   const layoutNames = templateFiles.map(t => t.replace(/^.*\//, '').replace('.ejs', ''));
-  const compiled = templateFiles.map(t => ejs.compile(fs.readFileSync(t).toString()))
+  const compiled = templateFiles.map(t => ejs.compile(fs.readFileSync(t).toString(), {
+    root: layoutsDir,
+    filename: t
+  }));
   const templates = _.zipObject(layoutNames, compiled);
   return {
     render: (layoutName, frontMatter, content) => {

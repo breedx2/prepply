@@ -28,9 +28,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* make builder handle single files too
-* server
-* server reload/recompile
 * timestamps files after creation
 * blogs paging
 * blogs tags (+ paging)
