@@ -72,7 +72,7 @@ function startServer(args){
   const app = express();
 
   app.use(function(req, res, next) {
-    if (req.path.replace(/\/$/, '').match(/\/\w+$/)) {
+    if (req.path.replace(/\/$/, '').match(/\/[-\w]+$/)) {
       const file = `${args.outdir}${req.path.replace(/\/$/, '')}.html`;
       return fs.exists(file, exists => {
         console.log(`${req.url} => ${req.url}.html`);
