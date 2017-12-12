@@ -34,7 +34,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * blogs tags (+ paging)
 * bring over fonts (from jekyl branch?)
 * make a theme
-* fix up duplicated page headings (title)
 * fix up ligthboxes
 * fix up custom css / js in pages
 * whataburger tape has <style> css in it

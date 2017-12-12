@@ -71,6 +71,10 @@ function buildOutfilename(options, fm, filename){
   if(permalink){
     return `${options.outdir}${permalink}.html`;
   }
+  if(fm.attributes.layout === 'post'){
+    const dateMunged = fp.replace(/(\d\d\d\d)-(\d\d)-(\d\d)-/, '$2/');
+    return `${options.outdir}${dateMunged}.html`;
+  }
   return `${options.outdir}${fp}.html`;
 }
 
