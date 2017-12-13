@@ -38,7 +38,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * fix up custom css / js in pages
 * whataburger tape has <style> css in it
 * training of marine - custom title with <br/> in it (needed)
-* school.md custom title (red)
 * fix linkpile
 * fix cowstick
 * ...

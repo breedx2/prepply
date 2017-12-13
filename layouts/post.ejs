@@ -11,6 +11,14 @@
   <div class="container-fluid">
     <h1> THIS IS A BLOG POST PLEASE MAKE ME MOAR AWESOMEAR</h1>
     <h1><%- typeof pagetitle == 'undefined' ? title : pagetitle %></h1>
+    <h2><%= date %></h2>
+    <% if(typeof tags !== 'undefined') { %>
+      <h2>tags:
+       <% tags.forEach(tag => {%>
+         <a href='/blog/tags/<%= tag %>'><%= tag %></a>
+       <% }); %>
+     </h2>
+    <% } %>
     <%- content %>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
