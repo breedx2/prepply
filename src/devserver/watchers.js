@@ -19,7 +19,7 @@ function configure(args, reloadServer) {
   });
 
   //TODO: Don't hard-code a layout dir here (for others to make themes)
-  const layoutsDir = path.resolve(__dirname, 'layouts');
+  const layoutsDir = path.resolve(__dirname, '../../layouts');
   chokidar.watch(layoutsDir).on('change', path => {
     console.log(`Change in templates, big rebuild...`);
     machinery(args).then(reload);
