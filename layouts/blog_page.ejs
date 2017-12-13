@@ -4,11 +4,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="/css/custom.css">
-  <title><%= title %></title>
+  <title>noisybox blog</title>
 </head>
 <body>
   <%- include('./include/nav.ejs') %>
-  <%- include('./include/single_post.ejs') %>
+
+  <% blogs.forEach(blog => { %>
+    <% title = blog.title;
+       date = blog.date;
+       tags = blog.tags;
+       content = blog.content;
+       selfUrl = blog.selfUrl;
+    %>
+    <%- include('./include/single_post.ejs') %>
+  <% })%>
+
   <%- include('./include/bootstrap.ejs') %>
 </body>
 </html>

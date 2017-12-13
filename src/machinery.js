@@ -8,21 +8,23 @@ const path = require('path');
 const marked = require('marked');
 const sasshole = require('./sasshole');
 const layoutsLoader = require('./layouts');
+const blogPages = require('./blog_pages');
 
 async function run(options){
   console.time('process');
   emptyOutputDir(options);
-  processInputSiteFiles(options);
+  const templates = layoutsLoader.load(`${__dirname}/../layouts`);
+  console.log('templates have been loaded.');
+  processInputSiteFiles(options, templates);
+  blogPages.generate(options, templates);
   processStyles(options);
   console.timeEnd('process');
 }
 
-function processInputSiteFiles(options){
+function processInputSiteFiles(options, templates){
   const files = findInputFiles(options);
   console.log(`Found ${files.length} input files...`);
-  const templates = layoutsLoader.load(`${__dirname}/../layouts`);
-  console.log('post templates load');
-  files.forEach(f => processFile(options, templates, f));
+    files.forEach(f => processFile(options, templates, f));
 }
 
 function processStyles(options){
