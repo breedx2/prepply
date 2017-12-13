@@ -55,8 +55,9 @@ function processFile(options, templates, filename){
     const fm = frontMatter(fileData.toString());
     const layoutName = fm.attributes.layout || 'page';
     const htmlContent = marked(fm.body);
-    const rendered = templates.render(layoutName, fm.attributes, htmlContent);
     const outFile = buildOutfilename(options, fm, filename);
+    const renderOpts = _.assign({}, fm.attributes, { selfUrl: outFile.slice(options.outdir.length).replace(/\.html$/, '') });
+    const rendered = templates.render(layoutName, renderOpts, htmlContent);
     fs.ensureFileSync(outFile);
     fs.writeFileSync(outFile, rendered);
     console.log(`Output to ${outFile}`);

@@ -12,7 +12,7 @@
     <div class="col-md-8 offset-md-2">
       <div class="container-fluid bg-light blogitem">
         <div class="jumbotron">
-          <h1><%- typeof pagetitle == 'undefined' ? title : pagetitle %></h1>
+          <h1><a href="<%= selfUrl %>"><%= title %></a></h1>
           <p><%= date %></p>
           <p><b>tags:</b>
           <% if(typeof tags !== 'undefined') { %>

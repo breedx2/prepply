@@ -26,10 +26,12 @@ function configure(args, reloadServer) {
   });
 
   //TODO: Don't hard-code scss dir here (for others to make themes)
-  const scss = path.resolve(__dirname, '../../scss');
-  chokidar.watch(scss).on('change', path => {
-    console.log(`scss change ${path}`);
-    sasshole([path], args.outdir);
+  const scss = path.resolve(__dirname, '../../scss/**');
+  chokidar.watch(scss).on('change', changed => {
+    console.log(`scss change ${changed}`);
+    //TODO: Don't rely on just this as the theme root...
+    const custom = path.resolve(__dirname, '../../scss/custom.scss');
+    sasshole([custom], args.outdir);
     reload();
   });
 }
