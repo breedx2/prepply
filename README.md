@@ -31,7 +31,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * timestamps files after creation
 * add --nowatch to devserver
 * add site footer
-* blogs paging
 * blogs tags (+ paging)
 * bring over fonts (from jekyl branch?)
 * make a theme
@@ -42,6 +41,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 * training of marine - custom title with <br/> in it (needed)
 * fix linkpile
 * fix cowstick
+* fix iquitsmoking
 * p5glove could use some love -- around code blocks
 * check for all busted links
 * ...
