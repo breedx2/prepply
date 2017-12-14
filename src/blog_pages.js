@@ -71,7 +71,7 @@ function buildOutFilename(options, index){
   if(index == 0){
     return `${options.outdir}/blog.html`;
   }
-  return `${options.outdir}/blog/page/${index+1}.html`;
+  return `${options.outdir}/blog/page/${index}.html`;
 }
 
 module.exports = {

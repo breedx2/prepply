@@ -1,30 +1,34 @@
 <% if (pageCt > 0) { %>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <% if (pageNum == 1) { %>
-            <li class="page-item disabled"><a class='page-link'>First</a></li>
-        <% } else { %>
-            <li class="page-item"><a class='page-link' href="/blog">First</a></li>
-        <% } %>
-        <% let i = (pageNum > 5 ? pageNum - 4 : 1) %>
-        <% if (i !== 1) { %>
-            <li class="page-item disabled"><a class='page-link'>...</a></li>
-        <% } %>
-        <% for (; i <= (pageNum + 4) && i <= pageCt; i++) { %>
-            <% if (i == pageNum) { %>
-                <li class="page-item active"><a class='page-link'><%= i %></a></li>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <nav aria-label="pages">
+        <ul class="pagination blog-pager">
+            <% if (pageNum == 0) { %>
+                <li class="page-item disabled"><a class='page-link disabled'>newest</a></li>
             <% } else { %>
-                <li class='page-item'><a class='page-link' href="/blog/page/<%= i %>"><%= i %></a></li>
+                <li class="page-item"><a class='page-link' href="/blog">newest</a></li>
             <% } %>
-            <% if (i == Number(pageNum) + 4 && i < pageCt) { %>
+            <% let i = (pageNum > 5 ? pageNum - 4 : 1) %>
+            <% if (i !== 1) { %>
                 <li class="page-item disabled"><a class='page-link'>...</a></li>
             <% } %>
-        <% } %>
-        <% if (pageNum == pageCt) { %>
-            <li class="page-item disabled"><a class='page-link'>Last</a></li>
-        <% } else { %>
-            <li class='page-item'><a class='page-link' href="/blog/page/<%= pageCt %>">Last</a></li>
-        <% } %>
-    </ul>
-  </nav>
+            <% for (; i <= (pageNum + 4) && i < pageCt - 1; i++) { %>
+                <% if (i == pageNum) { %>
+                    <li class="page-item active"><a class='page-link'><%= i %></a></li>
+                <% } else { %>
+                    <li class='page-item'><a class='page-link' href="/blog/page/<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% if (i == Number(pageNum) + 4 && i < pageCt) { %>
+                    <li class="page-item disabled"><a class='page-link'>...</a></li>
+                <% } %>
+            <% } %>
+            <% if (pageNum == pageCt - 1) { %>
+                <li class="page-item disabled"><a class='page-link disabled'>oldest</a></li>
+            <% } else { %>
+                <li class='page-item'><a class='page-link' href="/blog/page/<%= pageCt-1 %>">oldest</a></li>
+            <% } %>
+        </ul>
+      </nav>
+    </div>
+  </div>
 <% } %>
