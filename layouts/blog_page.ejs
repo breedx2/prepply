@@ -8,18 +8,26 @@
 </head>
 <body>
   <%- include('./include/nav.ejs') %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 text-center">
+      <h1>blog</h1>
+    </div>
+  </div>
 
   <%- include('./include/blogs_pager.ejs') %>
 
-  <% blogs.forEach(blog => { %>
+  <% blogs.forEach((blog,index) => { %>
     <% title = blog.title;
        date = blog.date;
        tags = blog.tags;
        content = blog.content;
        selfUrl = blog.selfUrl;
+       firstOnPage = index === 0 ? true : false
     %>
     <%- include('./include/single_blog.ejs') %>
   <% })%>
+
+  <%- include('./include/blogs_pager.ejs') %>
 
   <%- include('./include/bootstrap.ejs') %>
 </body>
