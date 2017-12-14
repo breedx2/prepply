@@ -9,6 +9,8 @@
 <body>
   <%- include('./include/nav.ejs') %>
 
+  <%- include('./include/blogs_pager.ejs') %>
+
   <% blogs.forEach(blog => { %>
     <% title = blog.title;
        date = blog.date;

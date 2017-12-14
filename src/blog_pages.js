@@ -35,9 +35,12 @@ function findBlogFiles(options){
 function readAndParse(files){
   return files.map(filename => {
     const fileData = fs.readFileSync(filename);
+    const fm = frontMatter(fileData.toString());
+    //TODO: This title munge is very specific to noisybox data and should be moved to converto
+    fm.attributes.title = fm.attributes.title.startsWith('old_message_no_subject') ? '[no subject]' : fm.attributes.title;
     return Object.assign({},
       { filename: filename },
-      frontMatter(fileData.toString())
+      fm
     );
   });
 }
