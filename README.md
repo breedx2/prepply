@@ -42,4 +42,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * training of marine - custom title with <br/> in it (needed)
 * fix linkpile
 * fix cowstick
+* p5glove could use some love -- around code blocks
+* check for all busted links
 * ...

@@ -9,8 +9,12 @@
 <body>
   <%- include('./include/nav.ejs') %>
   <div class="container-fluid">
-    <h1><%- typeof pagetitle == 'undefined' ? title : pagetitle %></h1>
-    <%- content %>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1><%- typeof pagetitle == 'undefined' ? title : pagetitle %></h1>
+        <%- content %>
+      </div>
+    </div>
   </div>
   <%- include('./include/bootstrap.ejs') %>
 </body>

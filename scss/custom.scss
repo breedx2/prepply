@@ -1,7 +1,12 @@
-// Your variable overrides
+
 $body-bg: #DDDDDD;
 $body-color: #111;
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
 @import "scss/blog.scss";
+
+ul {
+  margin-left: 10pt;
+  padding-left: 0;
+}
