@@ -16,9 +16,9 @@ const PAGE_SIZE = 10;
 function generate(options, templates){
   const files = findBlogFiles(options);
   const parsed = readAndParse(files);
-  const sorted = _.sortBy(parsed, 'attributes.date');
+  const sorted = _.reverse(_.sortBy(parsed, 'attributes.date'));
 
-  const pages = _.map(_.chunk(sorted, PAGE_SIZE), _.reverse);
+  const pages = _.chunk(sorted, PAGE_SIZE);
   const renderOpts = Object.assign({}, options, { pageCt: pages.length});
   const render = _.curry(renderPage)(renderOpts, templates);
   _.forEach(pages, render);
@@ -35,12 +35,9 @@ function findBlogFiles(options){
 function readAndParse(files){
   return files.map(filename => {
     const fileData = fs.readFileSync(filename);
-    const fm = frontMatter(fileData.toString());
-    //TODO: This title munge is very specific to noisybox data and should be moved to converto
-    fm.attributes.title = fm.attributes.title.startsWith('old_message_no_subject') ? '[no subject]' : fm.attributes.title;
     return Object.assign({},
       { filename: filename },
-      fm
+      frontMatter(fileData.toString())
     );
   });
 }
@@ -71,7 +68,7 @@ function renderPage(options, templates, page, index){
 }
 
 function buildOutFilename(options, index){
-  if(index + 1 == options.pageCt){
+  if(index == 0){
     return `${options.outdir}/blog.html`;
   }
   return `${options.outdir}/blog/page/${index+1}.html`;
