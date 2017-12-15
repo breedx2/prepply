@@ -65,7 +65,10 @@ function processFile(options, templates, filename){
     console.log(`Output to ${outFile}`);
     return;
   }
-  //TODO: Handle other kinds of files....copy over as-is
+  const outFile = filename.replace(options.indir, options.outdir);
+  fs.ensureFileSync(outFile);
+  fs.copySync(filename, outFile);
+  console.log(`Direct copy to ${outFile}`);
 }
 
 function buildOutfilename(options, fm, filename){

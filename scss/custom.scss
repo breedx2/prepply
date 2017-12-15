@@ -4,11 +4,17 @@ $body-color: #111;
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
+@import "scss/fonts.scss";
 @import "scss/blog.scss";
 
 ul {
   margin-left: 10pt;
   padding-left: 0;
+}
+
+.navbar-brand {
+  font-family: cabin_sketch_bold;
+  font-size: 32pt;
 }
 
 .pagecontent {
