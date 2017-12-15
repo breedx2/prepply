@@ -28,11 +28,14 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
+* add site footer
 * timestamps files after creation
 * add --nowatch to devserver
-* add site footer
+* page content min-height (like in "misc" page, it's too stubby/short)
+* background image too big?  different sizes for viewport size?
+* only compile sass for custom.scss (not blog, fonts, etc)
 * blogs tags (+ paging)
-* bring over fonts (from jekyl branch?)
+* rss feed
 * make a theme
 * fix up lightboxes
 * changing content of a single blog screws paging, just redo them all(?)
