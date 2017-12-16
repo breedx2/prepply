@@ -35,6 +35,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 * background image too big?  different sizes for viewport size?
 * only compile sass for custom.scss (not blog, fonts, etc)
 * blogs tags (+ paging)
+* ensure favicon on all templates
 * rss feed
 * make a theme
 * make a landing/splash page.
