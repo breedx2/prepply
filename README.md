@@ -37,6 +37,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 * blogs tags (+ paging)
 * rss feed
 * make a theme
+* make a landing/splash page.
 * fix up lightboxes
 * changing content of a single blog screws paging, just redo them all(?)
 * fix up custom css / js in pages
