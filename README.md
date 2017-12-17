@@ -29,12 +29,12 @@ $ node prepply/dev-server.js --indir site --outdir out
 # todo:
 
 * timestamps files after creation
-* page content min-height (like in "misc" page, it's too stubby/short)
-* background image too big?  different sizes for viewport size?
 * only compile sass for custom.scss (not blog, fonts, etc)
 * blogs tags (+ paging)
 * rss feed
 * make a theme
+* page content min-height (like in "misc" page, it's too stubby/short)
+* background image too big?  different sizes for viewport size?
 * make a landing/splash page.
 * fix up lightboxes
 * link color to red
@@ -44,6 +44,16 @@ $ node prepply/dev-server.js --indir site --outdir out
 * training of marine - custom title with <br/> in it (needed)
 * fix cowstick
 * fix iquitsmoking
+* directory listings
+* redirects?
 * p5glove could use some love -- around code blocks
 * check for all busted links
+* sometimes file change can crash devserver?
+* build publication scriptery
 * ...
+
+# post-deploy
+
+* verify content-type for rss/atom
+* crawl for 404s
+* verify feed(s) in feedly

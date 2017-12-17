@@ -6,19 +6,29 @@ const fs = require('fs-extra');
 const frontMatter = require('front-matter');
 const path = require('path');
 const marked = require('marked');
+const yaml = require('js-yaml');
 const sasshole = require('./sasshole');
 const layoutsLoader = require('./layouts');
-const blogPages = require('./blog_pages');
+const blog = require('./blog');
 
-async function run(options){
-  console.time('process');
-  emptyOutputDir(options);
+async function run(inputOptions){
+  console.time('prepply machinery');
+  emptyOutputDir(inputOptions);
+  const options = _.assign({}, inputOptions, readConfig(inputOptions.config));
   const templates = layoutsLoader.load(`${__dirname}/../layouts`);
   console.log('templates have been loaded.');
   processInputSiteFiles(options, templates);
-  blogPages.generate(options, templates);
+  blog.build(options, templates);
   processStyles(options);
-  console.timeEnd('process');
+  console.timeEnd('prepply machinery');
+}
+
+function readConfig(file){
+  console.log(`Loading config from ${file}`);
+  const configData = fs.readFileSync(file, 'utf-8');
+  const result = yaml.safeLoad(configData);
+  console.log('Config loaded');
+  return result;
 }
 
 function processInputSiteFiles(options, templates){

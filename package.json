@@ -4,23 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev-server": "node dev-server --indir ../site --outdir ../out --config config.yml",
-    "build": "node prepply --indir ../site --outdir ../out --config config.yml"
+    "dev-server": "node dev-server --indir ../site --outdir ../out --config ../site/config.yml",
+    "build": "node prepply --indir ../site --outdir ../out --config ../site/config.yml"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "4.0.0-beta.2",
-    "jquery": "1.9.1",
-    "popper.js": "1.12.9",
     "ejs": "^2.5.7",
+    "feed": "^1.1.1",
     "front-matter": "^2.3.0",
     "fs-extra": "^4.0.3",
     "glob": "^7.1.2",
+    "jquery": "1.9.1",
+    "js-yaml": "^3.10.0",
     "lodash": "^4.17.4",
     "marked": "^0.3.7",
     "minimist": "^1.2.0",
-    "node-sass": "^4.7.2"
+    "node-sass": "^4.7.2",
+    "popper.js": "1.12.9"
   },
   "devDependencies": {
     "chokidar": "^1.7.0",
