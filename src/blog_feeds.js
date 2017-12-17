@@ -4,6 +4,7 @@ const _ = require('lodash');
 const Feed = require('feed');
 const marked = require('marked');
 const fs = require('fs');
+const blogLinks = require('./blog_links');
 
 function build(options, sortedBlogs){
   console.log('Building blog feeds...');
@@ -48,10 +49,11 @@ function buildFeed(options, sortedBlogs){
   const feed = new Feed(feedOptions);
   sortedBlogs.slice(0, 10).forEach(blog => {
     console.log(blog);
+    const selfUrl = blogLinks.permalink(options, blog);
     const item = {
       title: blog.attributes.title,
-      id: blog.attributes.xxxxxxxxxxxxxxxx,
-      link: blog.attributes.xxxxxxxxxxx,
+      id: selfUrl,
+      link: selfUrl,
       description: marked(blog.body),
       date: blog.attributes.date,
       author: [{
