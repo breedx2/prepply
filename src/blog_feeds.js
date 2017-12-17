@@ -36,7 +36,7 @@ function buildFeed(options, sortedBlogs){
         image: _.get(options, 'feed.image'),
         favicon: _.get(options, 'feed.favicon'),
         copyright: _.get(options, 'feed.copyright'),
-        // updated: '2001-01-01',
+        updated: sortedBlogs[0].attributes.date,
         feedLinks: {
           rss: _.get(options, 'feed.rss-url'),
           atom: _.get(options, 'feed.atom-url')
