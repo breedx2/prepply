@@ -2,9 +2,9 @@
 
 const _ = require('lodash');
 const fs = require('fs-extra');
-const marked = require('marked');
 const readAllBlogs = require('./read_all_blogs');
 const blogLinks = require('./blog_links');
+const blogRenderMap = require('./blog_render_mapper');
 
 const PAGE_SIZE = 10;
 
@@ -18,13 +18,7 @@ function generate(options, templates, sortedBlogs){
 function renderPage(options, templates, page, index){
   console.log(`Rendering blog page ${index}...`);
 
-  const blogs = _.map(page, item => {
-    const html = marked(item.body);
-    return Object.assign({}, item.attributes, {
-      content: html,
-      selfUrl: blogLinks.permalink(options, item)
-    });
-  });
+  const blogs = blogRenderMap(options, page);
   const renderOpts = {
     blogs: blogs,
     pageNum: index,

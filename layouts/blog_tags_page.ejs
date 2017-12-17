@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="/css/custom.css">
+  <title>noisybox blog</title>
+</head>
+<body>
+  <%- include('./include/nav.ejs') %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 text-center">
+      <h1 class='blogtitle'>blog</h1>
+    </div>
+  </div>
+
+  <h1>blogs tagged something something FIXME something</h1>
+
+  <% blogs.forEach((blog,index) => { %>
+    <% title = blog.title;
+       date = blog.date;
+       tags = blog.tags;
+       content = blog.content;
+       selfUrl = blog.selfUrl;
+       firstOnPage = index === 0 ? true : false
+    %>
+    <%- include('./include/single_blog.ejs') %>
+  <% })%>
+
+  <div class='row'>&nbsp;</div>
+  <div class='row'>&nbsp;</div>
+  <%- include('./include/footer.ejs') %>
+  <%- include('./include/bootstrap.ejs') %>
+</body>
+</html>

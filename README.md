@@ -50,6 +50,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 * check for all busted links
 * sometimes file change can crash devserver?
 * build publication scriptery
+* publish on github
 * ...
 
 # post-deploy
