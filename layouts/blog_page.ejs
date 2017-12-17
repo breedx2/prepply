@@ -11,7 +11,11 @@
   <%- include('./include/nav.ejs') %>
   <div class="row">
     <div class="col-md-8 offset-md-2 text-center">
+    <% if(typeof tag === 'undefined'){ %>
       <h1 class='blogtitle'>blog</h1>
+    <% } else { %>
+      <h1 class='blogtitle'>blogs tagged "<%- tag %>"</h1>
+    <% } %>
     </div>
   </div>
 
@@ -29,7 +33,7 @@
   <% })%>
 
   <div class='row'>&nbsp;</div>
-  <%- include('./include/blogs_pager.ejs') %>
+  <%-  include('./include/blogs_pager.ejs') %>
   <div class='row'>&nbsp;</div>
   <div class='row'>&nbsp;</div>
   <%- include('./include/footer.ejs') %>

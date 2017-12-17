@@ -14,7 +14,7 @@ function build(options, templates, sortedBlogs){
     const [tag, blogs] = pair;
     const outFile = `${options.outdir}/blog/tags/${tag}.html`;
     const renderBlogs = blogRenderMap(options, blogs);
-    const fileData = templates.render('blog_tags_page', { blogs: renderBlogs});
+    const fileData = templates.render('blog_page', { tag: tag, blogs: renderBlogs});
     console.log(`TAG ${tag} => ${outFile}`);
     fs.ensureFileSync(outFile);
     fs.writeFileSync(outFile, fileData);

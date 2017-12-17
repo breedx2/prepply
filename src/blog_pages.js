@@ -6,7 +6,7 @@ const readAllBlogs = require('./read_all_blogs');
 const blogLinks = require('./blog_links');
 const blogRenderMap = require('./blog_render_mapper');
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 10; //TODO: Push to config...
 
 function generate(options, templates, sortedBlogs){
   const pages = _.chunk(sortedBlogs, PAGE_SIZE);

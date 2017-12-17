@@ -23,6 +23,15 @@
    justify-content: center;
 }
 
+.blogtitle {
+  font-weight: bold;
+  -webkit-text-stroke: 2px black;
+  -webkit-text-fill-color: white;
+  //  -webkit-text-stroke-width: 1px;
+  //  -webkit-text-stroke-color: white;
+  padding-top: 10pt;
+}
+
 .blog-pager-row, .blog-pager-row ul {
   margin-top: 0;
   margin-bottom: 0;

@@ -28,9 +28,11 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
+* consolidate tag page and page templates
+* blogs tags (+ paging)
+* blog tags FEEDS (rss/atom)
 * timestamps files after creation
 * only compile sass for custom.scss (not blog, fonts, etc)
-* blogs tags (+ paging)
 * reinstall node_modules as dep test/cleaning
 * make a theme
 * page content min-height (like in "misc" page, it's too stubby/short)
