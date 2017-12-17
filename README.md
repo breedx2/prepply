@@ -32,7 +32,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * only compile sass for custom.scss (not blog, fonts, etc)
 * blogs tags (+ paging)
 * reinstall node_modules as dep test/cleaning
-* rss feed
 * make a theme
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?

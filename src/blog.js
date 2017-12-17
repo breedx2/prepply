@@ -12,7 +12,6 @@ function build(options, templates){
 }
 
 function buildBlogFeeds(options, templates, sorted){
-  console.log('Building feeds...');
   blogFeeds.build(options, templates, sorted);
 }
 
