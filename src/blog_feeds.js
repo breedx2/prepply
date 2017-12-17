@@ -16,7 +16,7 @@ function build(options, templates, sortedBlogs) {
 
 function buildRss(options, templates, feed) {
   //TODO: Push to config
-  const rssFile = `${options.outdir}/rss.xml`;
+  const rssFile = `${options.outdir}/blog/rss.xml`;
   console.log('Building RSS feed...');
   const rendered = templates.render('rss', feed);
   fs.writeFileSync(rssFile, rendered);
@@ -25,7 +25,7 @@ function buildRss(options, templates, feed) {
 
 function buildAtom(options, templates, feed) {
   //TODO: Push to config
-  const atomFile = `${options.outdir}/atom.xml`;
+  const atomFile = `${options.outdir}/blog/atom.xml`;
   console.log('Building Atom feed...');
   const rendered = templates.render('atom', feed);
   fs.writeFileSync(atomFile, rendered);
