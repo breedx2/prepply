@@ -26,6 +26,7 @@ function usage(){
   --outdir <dir>  :: output site directory of html
   --config <file> :: config yml file to use (default = <indir>/config.yml)
   --noclean       :: don't clean output dir (default = false, clean output dir)
+  --nowatch       :: don't watch for changes
   `);
 }
 
@@ -36,7 +37,8 @@ function argsValid(args){
 function setDefaults(args){
   const defaults = {
     config: `${args.indir}/config.yml`,
-    noclean: false
+    noclean: false,
+    nowatch: false
   };
   return _.assign(defaults, args);
 }
@@ -45,6 +47,9 @@ async function run(args){
   console.log('Running initial site prep...');
   await machinery(args);
   const reloadServer = startServer(args);
+  if(args.nowatch){
+    return console.log('--nowatch specified, skipping fs change watching.');
+  }
   watchers.configure(args, reloadServer);
 }
 
