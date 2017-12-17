@@ -28,7 +28,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* blogs title hard to read
 * timestamps files after creation
 * add --nowatch to devserver
 * page content min-height (like in "misc" page, it's too stubby/short)
