@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title><%- title %></title>
+    <link><%- rssUrl %></link>
+    <atom:link href="<%- rssUrl %>" rel="self" type="application/rss+xml" />
+    <description><%- description %></description>
+    <language><%- language %></language>
+    <webMaster><%- author.email %> (<%- author.name %>)</webMaster>
+    <pubDate><%- date.toUTCString() %></pubDate>
+    <% items.forEach(item => {%>
+      <item>
+      	<title><%- item.title %></title>
+      	<link><%- item.selfUrl %></link>
+      	<guid isPermaLink='true'><%- item.selfUrl %></guid>
+      	<pubDate><%- item.date.toUTCString() %></pubDate>
+      	<description><%= item.description %></description>
+      </item>
+    <% }); %>
+  </channel>
+</rss>

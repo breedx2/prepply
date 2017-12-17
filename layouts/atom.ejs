@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title><%- title %></title>
+	<link href='<%- link %>'/>
+	<link href='<%- atomUrl %>' rel='self'/>
+  <icon><%- favicon %></icon>
+  <logo><%- logo %></logo>
+  <rights><%- copyright %></rights>
+	<updated><%- date.toISOString() %></updated>
+	<author>
+    <name><%- author.name %></name>
+    <email><%- author.email %></email>
+  </author>
+	<id>urn:uuid:75392340-704d-463f-9dc0-98b78c24a4bc</id>
+  <% items.forEach(item => {%>
+	<entry>
+		<title><%- item.title %></title>
+		<link href='<%- item.selfUrl %>'/>
+		<id><%- item.selfUrl %></id>
+		<updated><%- item.date.toISOString() %></updated>
+    <% item.tags.forEach(tag => {%>
+      <category term='<%- tag %>'/>
+    <% }); %>
+		<content type='html'><%= item.description %></content>
+	</entry>
+  <% }); %>
+</feed>

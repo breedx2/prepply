@@ -8,12 +8,12 @@ function build(options, templates){
   console.log("Let's make a blog now...");
   const sorted = readAllBlogs(options); //warning -- reads all into memory, see comment in lib
   blogPages.generate(options, templates, sorted);
-  buildBlogFeeds(options, sorted);
+  buildBlogFeeds(options, templates, sorted);
 }
 
-function buildBlogFeeds(options, sorted){
+function buildBlogFeeds(options, templates, sorted){
   console.log('Building feeds...');
-  blogFeeds.build(options, sorted);
+  blogFeeds.build(options, templates, sorted);
 }
 
 module.exports = {
