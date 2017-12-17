@@ -4,6 +4,7 @@ const _ = require('lodash');
 const fs = require('fs-extra');
 const marked = require('marked');
 const readAllBlogs = require('./read_all_blogs');
+const blogLinks = require('./blog_links');
 
 const PAGE_SIZE = 10;
 
@@ -19,11 +20,9 @@ function renderPage(options, templates, page, index){
 
   const blogs = _.map(page, item => {
     const html = marked(item.body);
-    const filename = item.filename.replace(options.indir, '').replace(/\.md$/, '');
-    const dateMunged = filename.replace(/(\d\d\d\d)-(\d\d)-(\d\d)-/, '$2/');
     return Object.assign({}, item.attributes, {
       content: html,
-      selfUrl: dateMunged
+      selfUrl: blogLinks.permalink(options, item)
     });
   });
   const renderOpts = {

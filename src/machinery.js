@@ -10,6 +10,7 @@ const yaml = require('js-yaml');
 const sasshole = require('./sasshole');
 const layoutsLoader = require('./layouts');
 const blog = require('./blog');
+const blogLinks = require('./blog_links');
 
 async function run(inputOptions){
   console.time('prepply machinery');
@@ -68,7 +69,12 @@ function processFile(options, templates, filename){
     const layoutName = fm.attributes.layout || 'page';
     const htmlContent = marked(fm.body);
     const outFile = buildOutfilename(options, fm, filename);
-    const renderOpts = _.assign({}, fm.attributes, { selfUrl: outFile.slice(options.outdir.length).replace(/\.html$/, '') });
+    const selfUrl = fm.attributes.layout == 'post' ?
+      blogLinks.permalink(options, { filename: filename}) :
+      outFile.slice(options.outdir.length).replace(/\.html$/, '');
+    const renderOpts = _.assign({}, fm.attributes, {
+      selfUrl: selfUrl ,
+    });
     const rendered = templates.render(layoutName, renderOpts, htmlContent);
     fs.ensureFileSync(outFile);
     fs.writeFileSync(outFile, rendered);
