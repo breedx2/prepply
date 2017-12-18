@@ -25,7 +25,9 @@ async function run(inputOptions){
   const templates = layoutsLoader.load(`${__dirname}/../layouts`);
   console.log('templates have been loaded.');
   processInputSiteFiles(options, templates);
-  blog.build(options, templates);
+  if(!options.noblogs){
+    blog.build(options, templates);
+  }
   processStyles(options);
   console.timeEnd('prepply machinery');
 }

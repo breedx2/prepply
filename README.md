@@ -30,7 +30,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 * timestamps files after creation
 * only compile sass for custom.scss (not blog, fonts, etc)
-* make a theme
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
 * make a landing/splash page.
@@ -42,9 +41,9 @@ $ node prepply/dev-server.js --indir site --outdir out
 * training of marine - custom title with <br/> in it (needed)
 * fix cowstick
 * fix iquitsmoking
+* make a theme
 * directory listings
 * redirects?
-* p5glove could use some love -- around code blocks
 * check for all busted links
 * sometimes file change can crash devserver?
 * build publication scriptery
