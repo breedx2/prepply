@@ -31,5 +31,10 @@
   hljs.initHighlightingOnLoad(); // code block syntax highlighting
   </script>
   <%- include('./include/lightbox.ejs') %>
+  <% if(typeof jsinc !== 'undefined') { %>
+    <%   jsinc.forEach(js => { %>
+           <script src="<%- js %>"></script>
+  <%     }); %>
+  <% } %>
 </body>
 </html>
