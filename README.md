@@ -29,7 +29,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 # todo:
 
 * timestamps files after creation
-* only compile sass for custom.scss (not blog, fonts, etc)
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
 * make a landing/splash page.

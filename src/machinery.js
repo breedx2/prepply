@@ -48,7 +48,7 @@ function processInputSiteFiles(options, templates){
 
 function processStyles(options){
   console.log('Processing styles...');
-  const scssFiles = glob.sync(`${__dirname}/../scss/*.scss`, { nodir: true });
+  const scssFiles = glob.sync(`${__dirname}/../scss/custom.scss`, { nodir: true });
   return sasshole(scssFiles, options.outdir);
 }
 
