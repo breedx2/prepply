@@ -28,11 +28,8 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* blog tags FEEDS (rss/atom)
-* add rss and atom links to blogs heading
 * timestamps files after creation
 * only compile sass for custom.scss (not blog, fonts, etc)
-* reinstall node_modules as dep test/cleaning
 * make a theme
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?

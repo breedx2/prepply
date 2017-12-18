@@ -5,6 +5,8 @@
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
   <link rel="stylesheet" href="/css/custom.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/> -->
+  <link rel="stylesheet" href="/css/atom-one-dark.css"/>
   <title><%= title %></title>
 </head>
 <body>
@@ -19,5 +21,9 @@
   </div>
   <%- include('./include/footer.ejs') %>
   <%- include('./include/bootstrap.ejs') %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+  hljs.initHighlightingOnLoad();
+  </script>
 </body>
 </html>

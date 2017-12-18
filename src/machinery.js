@@ -12,6 +12,12 @@ const layoutsLoader = require('./layouts');
 const blog = require('./blog');
 const blogLinks = require('./blog_links');
 
+marked.setOptions({
+  highlight: function (code, lang, callback) {
+    return require('highlight.js').highlightAuto(code).value;
+  }
+});
+
 async function run(inputOptions){
   console.time('prepply machinery');
   emptyOutputDir(inputOptions);
