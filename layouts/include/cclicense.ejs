@@ -1,0 +1,11 @@
+<% if(typeof cclicense !== 'undefined'){ %>
+<div class="card cclicense p-2 m-2">
+  <a href='http://creativecommons.org/licenses/by-nc/2.0/'><img tile='cc-license' src='http://creativecommons.org/images/public/somerights20.gif'/></a>
+  <br/>
+  This work is licensed under a <br/>
+  <a href='<%- cclicense.licenseUrl %>'>Creative Commons License</a>
+  <br/>
+  <em>Also available in other formats on
+    <a href='<%- cclicense.item.url %>'><%- cclicense.item.text %>.</em>
+</div>
+<% } %>

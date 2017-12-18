@@ -29,10 +29,12 @@ $ node prepply/dev-server.js --indir site --outdir out
 # todo:
 
 * timestamps files after creation
+* fix media player in album pages
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
 * make a landing/splash page.
 * fix up lightboxes
+* RDF in album pages.
 * changing content of a single blog screws paging, just redo them all(?)
 * fix up custom css / js in pages
 * whataburger tape has <style> css in it

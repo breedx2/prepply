@@ -5,7 +5,6 @@
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
   <link rel="stylesheet" href="/css/custom.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/> -->
   <link rel="stylesheet" href="/css/atom-one-dark.css"/>
   <title><%= title %></title>
 </head>
@@ -13,7 +12,10 @@
   <%- include('./include/nav.ejs') %>
   <div class="container">
     <div class="row pagecontent">
-      <div class="col-md-8 offset-md-2 bg-light">
+      <div class="col-md-2">
+        <%- include('./include/cclicense.ejs') %>
+      </div>
+      <div class="col-md-8 bg-light">
         <h1><%- typeof pagetitle == 'undefined' ? title : pagetitle %></h1>
         <%- content %>
       </div>
