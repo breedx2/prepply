@@ -2,34 +2,26 @@
 
 const _ = require('lodash');
 const marked = require('marked');
-const fs = require('fs');
+const fs = require('fs-extra');
 const blogLinks = require('./blog_links');
 
 const DEFAULT_NUM = 10;
 
 function build(options, templates, sortedBlogs) {
-  console.log('Building blog feeds...');
+  if(!options.tag) console.log('Building blog feeds...');
   const feed = buildFeed(options, sortedBlogs);
-  buildRss(options, templates, feed);
-  buildAtom(options, templates, feed);
+  const rssFile = options.rssFile || `${options.outdir}/blog/rss.xml`;
+  writeFeed(templates, 'RSS', rssFile, feed);
+  const atomFile = options.atomFile || `${options.outdir}/blog/atom.xml`;
+  writeFeed(templates, 'Atom', atomFile, feed);
 }
 
-function buildRss(options, templates, feed) {
-  //TODO: Push to config
-  const rssFile = `${options.outdir}/blog/rss.xml`;
-  console.log('Building RSS feed...');
-  const rendered = templates.render('rss', feed);
-  fs.writeFileSync(rssFile, rendered);
-  console.log(`Wrote ${rssFile}`);
-}
-
-function buildAtom(options, templates, feed) {
-  //TODO: Push to config
-  const atomFile = `${options.outdir}/blog/atom.xml`;
-  console.log('Building Atom feed...');
-  const rendered = templates.render('atom', feed);
-  fs.writeFileSync(atomFile, rendered);
-  console.log(`Wrote ${atomFile}`);
+function writeFeed(templates, name, outFile, feed){
+  console.log(`Building ${name} feed...`);
+  const rendered = templates.render(name.toLowerCase(), feed);
+  fs.ensureFileSync(outFile);
+  fs.writeFileSync(outFile, rendered);
+  console.log(`Wrote ${outFile}`);
 }
 
 function buildFeed(options, sortedBlogs) {

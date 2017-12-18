@@ -3,6 +3,7 @@
 const blogPages = require('./blog_pages');
 const blogFeeds = require('./blog_feeds');
 const blogTags = require('./blog_tags');
+const blogTagFeeds = require('./blog_tag_feeds');
 const readAllBlogs = require('./read_all_blogs');
 
 function build(options, templates){
@@ -11,6 +12,7 @@ function build(options, templates){
   blogPages.generate(options, templates, sorted);
   blogFeeds.build(options, templates, sorted);
   blogTags.build(options, templates, sorted);
+  blogTagFeeds.build(options, templates, sorted);
 }
 
 module.exports = {

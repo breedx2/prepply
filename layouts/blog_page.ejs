@@ -12,9 +12,15 @@
   <div class="row">
     <div class="col-md-8 offset-md-2 text-center">
     <% if(typeof tag === 'undefined'){ %>
-      <h1 class='blogtitle'>blog</h1>
+      <h1 class='blogtitle'>blog
+      <a href="/blog/rss.xml"><img class='feedicon' src='/images/rss-icon.png'/></a>
+      <a href="/blog/atom.xml"><img class='feedicon' src='/images/atom-icon.png'/></a>
+      </h1>
     <% } else { %>
-      <h1 class='blogtitle'>blogs tagged "<%- tag %>"</h1>
+      <h1 class='blogtitle'>blogs tagged "<%- tag %>"
+      <a href="/blog/tags/<%- tag %>/rss.xml"><img class='feedicon' src='/images/rss-icon.png'/></a>
+      <a href="/blog/tags/<%- tag %>/atom.xml"><img class='feedicon' src='/images/atom-icon.png'/></a>
+      </h1>
     <% } %>
     </div>
   </div>

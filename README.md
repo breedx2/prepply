@@ -28,9 +28,8 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* consolidate tag page and page templates
-* blogs tags (+ paging)
 * blog tags FEEDS (rss/atom)
+* add rss and atom links to blogs heading
 * timestamps files after creation
 * only compile sass for custom.scss (not blog, fonts, etc)
 * reinstall node_modules as dep test/cleaning
