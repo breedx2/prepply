@@ -41,6 +41,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 * fix iquitsmoking
 * make a theme
 * directory listings
+* convert html resume to markdown
 * redirects?
 * check for all busted links
 * sometimes file change can crash devserver?

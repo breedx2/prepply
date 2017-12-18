@@ -24,6 +24,7 @@ function usage(){
 
   --indir <dir>   :: input site directory of .md etc.
   --outdir <dir>  :: output site directory of html
+  --static <dir>  :: [optional] path to additional static assets
   --config <file> :: config yml file to use (default = <indir>/config.yml)
   --noclean       :: don't clean output dir (default = false, clean output dir)
   --nowatch       :: don't watch for changes
@@ -71,6 +72,9 @@ function startServer(args){
 
   app.use(reloadInjector);
   app.use(express.static(args.outdir));
+  if(args.static){
+    app.use(express.static(args.static));
+  }
   const server = http.createServer(app);
   const reloadServer = reload(app, { verbose: true});  //reload pages when stuff changes on disk
   server.listen(8080, () => {
