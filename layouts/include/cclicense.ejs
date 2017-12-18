@@ -4,8 +4,11 @@
   <br/>
   This work is licensed under a <br/>
   <a href='<%- cclicense.licenseUrl %>'>Creative Commons License</a>
+  <% if(typeof cclicense.item !== 'undefined') { %>
   <br/>
   <em>Also available in other formats on
-    <a href='<%- cclicense.item.url %>'><%- cclicense.item.text %>.</em>
+    <a href='<%- cclicense.item.url %>'><%- cclicense.item.text %>.
+  </em>
+  <% } %>
 </div>
 <% } %>
