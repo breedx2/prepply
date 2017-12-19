@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="/js/jquery.fancybox.min.css" type="text/css" media="screen" />
   <% } %>
   <title><%= title %></title>
+  <% if(typeof cssinc !== 'undefined') { %>
+    <%   cssinc.forEach(css => { %>
+           <link rel="stylesheet" href="<%- css %>"/>
+  <%     }); %>
+  <% } %>
 </head>
 <body>
   <%- include('./include/nav.ejs') %>

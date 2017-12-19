@@ -28,16 +28,19 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* timestamps files after creation
 * fix media player in album pages
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
 * make a landing/splash page.
+* fix atheist page
+* fix one wasted megabyte
 * RDF in album pages.
+* add github link on computers (and maybe nav?)
 * changing content of a single blog screws paging, just redo them all(?)
 * fix cowstick
 * dev server _should_ generate blogs and everything on the first go...just no on successive.
 * make a theme
+* clean up assets js and css dirs
 * directory listings
 * consider webpacking various js together for publish
 * convert html resume to markdown
@@ -45,7 +48,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 * check for all busted links
 * sometimes file change can crash devserver?
 * build publication scriptery
-* publish on github
+* publish project on github
 * ...
 
 # post-deploy
