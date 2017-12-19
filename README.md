@@ -33,7 +33,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * background image too big?  different sizes for viewport size?
 * make a landing/splash page.
 * fix atheist page
-* fix one wasted megabyte
 * RDF in album pages.
 * add github link on computers (and maybe nav?)
 * changing content of a single blog screws paging, just redo them all(?)
