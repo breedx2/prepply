@@ -33,10 +33,8 @@ $ node prepply/dev-server.js --indir site --outdir out
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
 * make a landing/splash page.
-* fix up lightboxes
 * RDF in album pages.
 * changing content of a single blog screws paging, just redo them all(?)
-* fix up custom css / js in pages
 * fix cowstick
 * make a theme
 * directory listings
