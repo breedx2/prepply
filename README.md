@@ -36,6 +36,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 * RDF in album pages.
 * changing content of a single blog screws paging, just redo them all(?)
 * fix cowstick
+* dev server _should_ generate blogs and everything on the first go...just no on successive.
 * make a theme
 * directory listings
 * consider webpacking various js together for publish

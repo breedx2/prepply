@@ -11,6 +11,7 @@ const sasshole = require('./sasshole');
 const layoutsLoader = require('./layouts');
 const blog = require('./blog');
 const blogLinks = require('./blog_links');
+const writeFile = require('./write_file');
 
 marked.setOptions({
   highlight: function (code, lang, callback) {
@@ -84,8 +85,7 @@ function processFile(options, templates, filename){
       selfUrl: selfUrl ,
     });
     const rendered = templates.render(layoutName, renderOpts, htmlContent);
-    fs.ensureFileSync(outFile);
-    fs.writeFileSync(outFile, rendered);
+    writeFile(outFile, rendered, fm.attributes.date);
     console.log(`Output to ${outFile}`);
     return;
   }

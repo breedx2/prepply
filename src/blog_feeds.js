@@ -4,6 +4,7 @@ const _ = require('lodash');
 const marked = require('marked');
 const fs = require('fs-extra');
 const blogLinks = require('./blog_links');
+const writeFile = require('./write_file');
 
 const DEFAULT_NUM = 10;
 
@@ -19,8 +20,7 @@ function build(options, templates, sortedBlogs) {
 function writeFeed(templates, name, outFile, feed){
   console.log(`Building ${name} feed...`);
   const rendered = templates.render(name.toLowerCase(), feed);
-  fs.ensureFileSync(outFile);
-  fs.writeFileSync(outFile, rendered);
+  writeFile(outFile, rendered, feed.date);
   console.log(`Wrote ${outFile}`);
 }
 

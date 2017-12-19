@@ -4,6 +4,7 @@ const _ = require('lodash');
 const fs = require('fs-extra');
 const blogRenderMap = require('./blog_render_mapper');
 const blogTagIndexer = require('./blog_tag_indexer');
+const writeFile = require('./write_file');
 
 function build(options, templates, sortedBlogs){
   const mappedTags = blogTagIndexer.index(sortedBlogs);
@@ -13,8 +14,7 @@ function build(options, templates, sortedBlogs){
     const renderBlogs = blogRenderMap(options, blogs);
     const fileData = templates.render('blog_page', { tag: tag, blogs: renderBlogs});
     console.log(`TAG ${tag} => ${outFile}`);
-    fs.ensureFileSync(outFile);
-    fs.writeFileSync(outFile, fileData);
+    writeFile(outFile, fileData, blogs[0].attributes.date);
   });
 }
 

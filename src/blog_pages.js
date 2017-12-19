@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const readAllBlogs = require('./read_all_blogs');
 const blogLinks = require('./blog_links');
 const blogRenderMap = require('./blog_render_mapper');
+const writeFile = require('./write_file');
 
 const PAGE_SIZE = 10; //TODO: Push to config...
 
@@ -28,8 +29,7 @@ function renderPage(options, templates, page, index){
   const rendered = templates.render('blog_page', renderOpts);
   const outFile = buildOutFilename(options, index);
   console.log(outFile);
-  fs.ensureFileSync(outFile);
-  fs.writeFileSync(outFile, rendered);
+  writeFile(outFile, rendered, blogs[0].date);
 }
 
 function buildOutFilename(options, index){
