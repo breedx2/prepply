@@ -1,10 +1,9 @@
 <% if(typeof lightbox !== 'undefined') { %>
 
 <script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
-<!-- <script type="text/javascript" src="/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script> -->
 
 <script type="text/javascript">
-console.log($('.lightbox a'));
+// console.log($('.lightbox a'));
 $('.lightbox a img').each((i, elem) => {
   // fancybox really loves to have this attr on elements for gallery to work.
   // perhaps goofy to jump thru parent, but prevents selecting anchors with no image inside

@@ -54,3 +54,8 @@ $ node prepply/dev-server.js --indir site --outdir out
 * verify content-type for rss/atom
 * crawl for 404s
 * verify feed(s) in feedly
+
+# such future
+
+* all page tag index
+* leverage sidebar etc
