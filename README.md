@@ -37,10 +37,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 * RDF in album pages.
 * changing content of a single blog screws paging, just redo them all(?)
 * fix up custom css / js in pages
-* whataburger tape has <style> css in it
-* training of marine - custom title with <br/> in it (needed)
 * fix cowstick
-* fix iquitsmoking
 * make a theme
 * directory listings
 * consider webpacking various js together for publish
