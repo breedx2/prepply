@@ -29,6 +29,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 # todo:
 
 * fix media player in album pages
+* convert html resume to markdown
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
 * make a landing/splash page.
@@ -40,7 +41,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * clean up assets js and css dirs
 * directory listings
 * consider webpacking various js together for publish
-* convert html resume to markdown
 * redirects?
 * check for all busted links
 * sometimes file change can crash devserver?
