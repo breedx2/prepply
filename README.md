@@ -29,7 +29,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 # todo:
 
 * let config specify in/out dirs and avoid in commandline via npm
-* video players in blog on mobile stretch beyond screen
 * fix media player in album pages
 * need a good 404 page!
 * convert html resume to markdown
