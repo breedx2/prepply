@@ -28,18 +28,22 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
+* video players in blog on mobile stretch beyond screen
 * fix media player in album pages
+* need a good 404 page!
 * convert html resume to markdown
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
-* make a landing/splash page.
 * RDF in album pages.
 * add github link on computers (and maybe nav?)
 * changing content of a single blog screws paging, just redo them all(?)
 * dev server _should_ generate blogs and everything on the first go...just no on successive.
+* improve landing/splash page.
 * make a theme
 * clean up assets js and css dirs
 * directory listings
+* ensure nginx logs are good (including 404, error log, etc)
+* script for quick-posting an image with some text (including via credit)
 * consider webpacking various js together for publish
 * redirects?
 * check for all busted links
