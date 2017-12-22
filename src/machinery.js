@@ -72,27 +72,35 @@ function findInputFiles(options){
 
 function processFile(options, templates, filename){
   if(filename.endsWith('.md')){
-    console.log(`Processing markdown ${filename}...`);
-    const fileData = fs.readFileSync(filename);
-    const fm = frontMatter(fileData.toString());
-    const layoutName = fm.attributes.layout || 'page';
-    const htmlContent = marked(fm.body);
-    const outFile = buildOutfilename(options, fm, filename);
-    const selfUrl = fm.attributes.layout == 'post' ?
-      blogLinks.permalink(options, { filename: filename}) :
-      outFile.slice(options.outdir.length).replace(/\.html$/, '');
-    const renderOpts = _.assign({}, fm.attributes, {
-      selfUrl: selfUrl ,
-    });
-    const rendered = templates.render(layoutName, renderOpts, htmlContent);
-    writeFile(outFile, rendered, fm.attributes.date);
-    console.log(`Output to ${outFile}`);
-    return;
+    return processMarkdownFile(options, templates, filename);
+  }
+
+  const inFileBare = filename.replace(options.indir, '');
+  if(options.ignore.includes(inFileBare)){
+    return console.log(`Skipping ignored ${inFileBare}`);
   }
   const outFile = filename.replace(options.indir, options.outdir);
   fs.ensureFileSync(outFile);
   fs.copySync(filename, outFile);
   console.log(`Direct copy to ${outFile}`);
+}
+
+function processMarkdownFile(options, templates, filename){
+  console.log(`Processing markdown ${filename}...`);
+  const fileData = fs.readFileSync(filename);
+  const fm = frontMatter(fileData.toString());
+  const layoutName = fm.attributes.layout || 'page';
+  const htmlContent = marked(fm.body);
+  const outFile = buildOutfilename(options, fm, filename);
+  const selfUrl = fm.attributes.layout == 'post' ?
+    blogLinks.permalink(options, { filename: filename}) :
+    outFile.slice(options.outdir.length).replace(/\.html$/, '');
+  const renderOpts = _.assign({}, fm.attributes, {
+    selfUrl: selfUrl ,
+  });
+  const rendered = templates.render(layoutName, renderOpts, htmlContent);
+  writeFile(outFile, rendered, fm.attributes.date);
+  console.log(`Output to ${outFile}`);
 }
 
 function buildOutfilename(options, fm, filename){
