@@ -28,6 +28,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
+* changing content of a single blog screws paging, just redo them all(?)
 * let config specify in/out dirs and avoid in commandline via npm
 * fix media player in album pages
 * need a good 404 page!
@@ -35,7 +36,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
 * add github link on computers (and maybe nav?)
-* changing content of a single blog screws paging, just redo them all(?)
 * dev server _should_ generate blogs and everything on the first go...just no on successive.
 * improve landing/splash page.
 * make a theme

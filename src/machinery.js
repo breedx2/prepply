@@ -6,12 +6,12 @@ const fs = require('fs-extra');
 const frontMatter = require('front-matter');
 const path = require('path');
 const marked = require('marked');
-const yaml = require('js-yaml');
 const sasshole = require('./sasshole');
 const layoutsLoader = require('./layouts');
 const blog = require('./blog');
 const blogLinks = require('./blog_links');
 const writeFile = require('./write_file');
+const readConfig = require('./read_config');
 
 marked.setOptions({
   highlight: function (code, lang, callback) {
@@ -31,14 +31,6 @@ async function run(inputOptions){
   }
   processStyles(options);
   console.timeEnd('prepply machinery');
-}
-
-function readConfig(file){
-  console.log(`Loading config from ${file}`);
-  const configData = fs.readFileSync(file, 'utf-8');
-  const result = yaml.safeLoad(configData);
-  console.log('Config loaded');
-  return result;
 }
 
 function processInputSiteFiles(options, templates){
