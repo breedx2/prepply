@@ -10,6 +10,10 @@
   padding: 2rem 2rem;
 }
 
+.blogitem iframe {
+  max-width: 100%;
+}
+
 .blogitem .jumbotron h1 a {
   text-decoration: none;
   color: black;
