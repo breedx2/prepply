@@ -11,6 +11,7 @@ const fs = require('fs');
 const watchers = require('./src/devserver/watchers');
 const machinery = require('./src/devserver/machinery');
 const reloadInjector = require('./src/devserver/reload-injector');
+const readConfig = require('./src/read_config');
 
 // Development server - uses reload for http and runs prepply
 const PORT = 8080;
@@ -31,8 +32,8 @@ function usage(){
   `);
 }
 
-function argsValid(args){
-  return _.every(['indir', 'outdir'], p => _.has(args, p));
+function argsValid(args, config){
+  return _.every(['indir', 'outdir'], p => _.has(args, p) || _.has(config, p));
 }
 
 function setDefaults(args){
@@ -84,14 +85,15 @@ function startServer(args){
 }
 
 const inputArgs = require('minimist')(process.argv.slice(2));
-if(!argsValid(inputArgs)){
+const config = readConfig(path.resolve(inputArgs.config));
+if(!argsValid(inputArgs, config)){
   usage();
   process.exit(1);
 }
 
 const args = setDefaults(inputArgs);
-args.indir = path.resolve(args.indir);
-args.outdir = path.resolve(args.outdir);
+args.indir = path.resolve(args.indir || config.indir);
+args.outdir = path.resolve(args.outdir || config.outdir);
 args.config = path.resolve(args.config);
 
 console.log(args);

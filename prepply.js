@@ -39,7 +39,7 @@ const args = require('minimist')(process.argv.slice(2), {
     config: `config.yml`
   }
 });
-const config = readConfig(args.config);
+const config = readConfig(path.resolve(args.config));
 
 if(!argsValid(args, config)){
   usage();
