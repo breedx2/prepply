@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev-server": "node dev-server --indir ../site --outdir ../out --config ../site/config.yml --static ../site-assets",
-    "build": "node prepply --indir ../site --outdir ../out --config ../site/config.yml"
+    "build": "node prepply --indir ../site --outdir ../out --config ../site/config.yml",
+    "upload": "rsync -avv --progress --checksum ../out/ jason@noisybox.net:/home/www/beta.noisybox.net/public/"
   },
   "author": "",
   "license": "ISC",
