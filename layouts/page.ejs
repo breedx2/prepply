@@ -9,6 +9,9 @@
   <% if(typeof lightbox !== 'undefined') { %>
     <link rel="stylesheet" href="/js/jquery.fancybox.min.css" type="text/css" media="screen" />
   <% } %>
+  <% if(typeof audioPlaylist !== 'undefined') { %>
+    <link href="/js/playlist.css" rel="stylesheet" type="text/css" />
+  <% } %>
   <title><%= title %></title>
   <% if(typeof cssinc !== 'undefined') { %>
     <%   cssinc.forEach(css => { %>
@@ -36,6 +39,7 @@
   hljs.initHighlightingOnLoad(); // code block syntax highlighting
   </script>
   <%- include('./include/lightbox.ejs') %>
+  <%- include('./include/playlist.ejs') %>
   <% if(typeof jsinc !== 'undefined') { %>
     <%   jsinc.forEach(js => { %>
            <script src="<%- js %>"></script>

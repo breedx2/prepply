@@ -28,7 +28,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* changing content of a single blog screws paging, just redo them all(?)
 * fix media player in album pages
 * need a good 404 page!
 * need an about page!
@@ -55,6 +54,10 @@ $ node prepply/dev-server.js --indir site --outdir out
 * verify content-type for rss/atom
 * crawl for 404s
 * verify feed(s) in feedly
+
+# bugs
+
+* BUG: changing content of a single blog screws paging, just redo them all(?)
 
 # such future
 
