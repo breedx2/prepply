@@ -28,8 +28,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* fix media player in album pages
-* need a good 404 page!
 * need an about page!
 * convert html resume to markdown
 * page content min-height (like in "misc" page, it's too stubby/short)
