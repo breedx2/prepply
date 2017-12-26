@@ -38,7 +38,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 * directory listings
 * ensure nginx logs are good (including 404, error log, etc)
 * script for quick-posting an image with some text (including via credit)
-* redirects?
 * check for all busted links
 * sometimes file change can crash devserver?
 * build publication scriptery
