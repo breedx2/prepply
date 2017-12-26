@@ -21,12 +21,12 @@
 </head>
 <body>
   <%- include('./include/nav.ejs') %>
-  <div class="container">
-    <div class="row pagecontent">
+  <div class="container fill-vert">
+    <div class="row pagecontent fill-vert">
       <div class="col-md-2">
         <%- include('./include/cclicense.ejs') %>
       </div>
-      <div class="col-md-8 bg-light">
+      <div class="col-md-8 bg-light fill-vert">
         <h1><%- typeof pagetitle == 'undefined' ? title : pagetitle %></h1>
         <%- content %>
       </div>

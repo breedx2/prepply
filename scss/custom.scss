@@ -31,7 +31,7 @@ a:hover {
 }
 
 .navbar-nav img {
-  max-width: 40px;
+  max-height: 40px;
   margin-left: 10pt;
   margin-right: 5pt;
   margin-top: 7pt;
@@ -72,4 +72,9 @@ ul {
 
 .pagecontent img {
   max-width: 100%;
+}
+
+.fill-vert {
+  min-height: 80vh;
+  height: 100%;
 }

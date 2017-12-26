@@ -30,9 +30,7 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 * need an about page!
 * convert html resume to markdown
-* page content min-height (like in "misc" page, it's too stubby/short)
 * background image too big?  different sizes for viewport size?
-* add github link on computers (and maybe nav?)
 * dev server _should_ generate blogs and everything on the first go...just no on successive.
 * improve landing/splash page.
 * make a theme
