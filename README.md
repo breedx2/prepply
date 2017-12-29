@@ -28,7 +28,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* need an about page!
 * convert html resume to markdown
 * background image too big?  different sizes for viewport size?
 * dev server _should_ generate blogs and everything on the first go...just no on successive.
