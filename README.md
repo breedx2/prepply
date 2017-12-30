@@ -28,7 +28,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* convert html resume to markdown
 * directory listings
 * background image too big?  different sizes for viewport size?
 * improve landing/splash page.
