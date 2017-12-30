@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="/css/custom.css">
+  <title><%= path %></title>
+</head>
+<body>
+  <%- include('./include/nav.ejs') %>
+  <div class="container fill-vert">
+    <div class="row pagecontent fill-vert">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8 bg-light fill-vert">
+        <h1><%= path %></h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">File</th>
+              <th scope="col">Size</th>
+              <th scope="col">Modified</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <a href="<%= parent %>"><img src='/images/file-directory.svg' alt='parent'/> &lt;parent directory&gt;</a>
+              </th>
+              <td></td>
+              <td></td>
+            </tr>
+            <% files.forEach(file => { %>
+              <tr>
+                <th scope="row"><a href="<%= file.path %>"><%= file.filename %></a></th>
+                <td><%= file.size %></td>
+                <td><%= file.modified %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <%- include('./include/footer.ejs') %>
+  <%- include('./include/bootstrap.ejs') %>
+</body>
+</html>

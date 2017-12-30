@@ -12,6 +12,7 @@ const blog = require('./blog');
 const blogLinks = require('./blog_links');
 const writeFile = require('./write_file');
 const readConfig = require('./read_config');
+const dirListings = require('./dir_listings');
 
 marked.setOptions({
   highlight: function (code, lang, callback) {
@@ -30,6 +31,7 @@ async function run(inputOptions){
     blog.build(options, templates);
   }
   processStyles(options);
+  processDirectoryListings(options, templates);
   console.timeEnd('prepply machinery');
 }
 
@@ -43,6 +45,11 @@ function processStyles(options){
   console.log('Processing styles...');
   const scssFiles = glob.sync(`${__dirname}/../scss/custom.scss`, { nodir: true });
   return sasshole(scssFiles, options.outdir);
+}
+
+function processDirectoryListings(options, templates){
+  console.log('Building directory listings...');
+  return dirListings(options, templates);
 }
 
 function emptyOutputDir(options){
