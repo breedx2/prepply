@@ -29,15 +29,15 @@ $ node prepply/dev-server.js --indir site --outdir out
 # todo:
 
 * convert html resume to markdown
+* directory listings
 * background image too big?  different sizes for viewport size?
-* dev server _should_ generate blogs and everything on the first go...just no on successive.
 * improve landing/splash page.
 * make a theme
 * clean up assets js and css dirs
-* directory listings
-* ensure nginx logs are good (including 404, error log, etc)
-* script for quick-posting an image with some text (including via credit)
 * check for all busted links
+* ensure nginx logs are good (including 404, error log, etc)
+* dev server _should_ generate blogs and everything on the first go...just no on successive.
+* script for quick-posting an image with some text (including via credit)
 * sometimes file change can crash devserver?
 * build publication scriptery
 * publish project on github
