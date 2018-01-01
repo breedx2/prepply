@@ -28,14 +28,14 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* ensure nginx logs are good (including 404, error log, etc)
+* ssl
 * improve landing/splash page.
-* make a theme
+* consider navbar heading font and other heading fonts
 * dev server _should_ generate blogs and everything on the first go...just no on successive.
-* script for quick-posting an image with some text (including via credit)
 * sometimes file change can crash devserver?
 * background image too big?  different sizes for viewport size?
 * build publication scriptery
+* script for quick-posting an image with some text (including via credit)
 * publish project on github
 * ...
 
