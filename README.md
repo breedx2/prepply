@@ -28,7 +28,6 @@ $ node prepply/dev-server.js --indir site --outdir out
 
 # todo:
 
-* ssl
 * improve landing/splash page.
 * consider navbar heading font and other heading fonts
 * dev server _should_ generate blogs and everything on the first go...just no on successive.
