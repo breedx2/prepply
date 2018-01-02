@@ -7,6 +7,10 @@ That static site can be published....
 ...and it's like all the other static gen frameworks, except apparently I hate them all
 and want to reinvent everything always because I'm probably stupid.
 
+I'm using prepply to build https://noisybox.net/
+
+Maybe you could find it useful too.
+
 # features
 
 * a "live dev" server
