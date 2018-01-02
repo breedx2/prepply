@@ -6,7 +6,7 @@
   "scripts": {
     "dev-server": "node dev-server --config ../site/config.yml --static ../site-assets",
     "build": "node prepply --config ../site/config.yml",
-    "upload": "rsync -avv --progress --checksum ../out/ jason@noisybox.net:/home/www/beta.noisybox.net/public/"
+    "upload": "rsync -avv --progress --checksum ../out/ jason@noisybox.net:/home/www/noisybox.net/public/"
   },
   "author": "",
   "license": "ISC",
