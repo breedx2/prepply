@@ -1,18 +1,35 @@
 Static site gen, my way.
 
-Turns markdown + front matter + config into a static site.
+Turns markdown + front matter + config + sass into a static site.
 
 That static site can be published....
 
 ...and it's like all the other static gen frameworks, except apparently I hate them all
-and want to reinvent everything always.
+and want to reinvent everything always because I'm probably stupid.
+
+# features
+
+* a "live dev" server
+* flat pages
+* a paged blog
+* blog rss/atom feeds
+* blog tags
+* blog tags atom/rss feeds
+* support for audio playlists
+* support for fancybox galleries
+
+Seems to be reasonably fast (generates 1700+ files on my site in under 2.5s).
 
 # build usage
 
 Builds the static site:
 
 ```
-$ node prepply/prepply.js --indir site --outdir out --clean
+$ node prepply/prepply.js --indir site --outdir out --clean --config ../site/config.yml
+```
+or, if your configuration file is correct
+```
+$ npm run build
 ```
 
 # dev server usage
@@ -20,36 +37,31 @@ $ node prepply/prepply.js --indir site --outdir out --clean
 Runs a live-reload development server:
 
 ```
-$ node prepply/dev-server.js --indir site --outdir out
+$ node prepply/dev-server.js --indir site --outdir out \
+    --config ../site/config.yml --static ../site-assets
+```
+
+of if your configuration is correct, just do
+```
+$ npm run dev-server
 ```
 
 # config file
 
-
-# todo:
-
-* improve landing/splash page.
-* dev server _should_ generate blogs and everything on the first go...just no on successive.
-* sometimes file change can crash devserver?
-* background image too big?  different sizes for viewport size?
-* build publication scriptery
-* script for quick-posting an image with some text (including via credit)
-* publish project on github
-* ...
-
-# post-deploy
-
-* verify content-type for rss/atom
-* crawl for 404s
-* verify feed(s) in feedly
+need to document this
 
 # bugs
 
-* BUG: changing content of a single blog screws paging, just redo them all(?)
+* changing content of a single blog screws paging, just redo them all(?)
+* dev server _should_ generate blogs and everything on the first go...just no on successive.
+* sometimes file change can crash devserver? maybe it's read before write finishes?
 
 # such future
 
-* all page tag index
+* um, maybe I should write some tests at some point. :)
+* make themeing / skinning a little more straightforward
+*
+* create tag pages for regular pages too
 * leverage sidebar etc
 * consider webpacking various js together for publish
-* RDF in album pages.
+* support for rdf, like in album pages (do people still care about rdf?)
