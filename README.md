@@ -17,6 +17,7 @@ and want to reinvent everything always because I'm probably stupid.
 * blog tags atom/rss feeds
 * support for audio playlists
 * support for fancybox galleries
+* assumes external assets, but supports in-site assets just in case
 
 Seems to be reasonably fast (generates 1700+ files on my site in under 2.5s).
 
@@ -27,7 +28,12 @@ Builds the static site:
 ```
 $ node prepply/prepply.js --indir site --outdir out --clean --config ../site/config.yml
 ```
-or, if your configuration file is correct
+
+This will process the content in the `site` dir, turning markdown into
+html and copying over assets, resulting in a new `out` dir.  Any exising `out` dir
+will be removed (the `--clean` option does this).
+
+If your configuration file is correct, then you can use this npm shortcut:
 ```
 $ npm run build
 ```
