@@ -1,6 +1,8 @@
 
 # Environment-specific file for rsync publishing
 
+# Copy this file to env.sh and customize it
+
 # The place where the final built site exists locally
 BUILD_OUTPUT_DIR=/home/someuser/code/mysite/out
 
