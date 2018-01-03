@@ -30,7 +30,8 @@ Seems to be reasonably fast (generates 1700+ files on my site in under 2.5s).
 Builds the static site:
 
 ```
-$ node prepply/prepply.js --indir site --outdir out --clean --config ../site/config.yml
+$ node prepply/prepply.js --indir ../site --outdir ../out \
+    --clean --config ../site/config.yml
 ```
 
 This will process the content in the `site` dir, turning markdown into
@@ -47,7 +48,7 @@ $ npm run build
 Runs a live-reload development server:
 
 ```
-$ node prepply/dev-server.js --indir site --outdir out \
+$ node prepply/dev-server.js --indir ../site --outdir ../out \
     --config ../site/config.yml --static ../site-assets
 ```
 
