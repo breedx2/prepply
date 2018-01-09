@@ -21,7 +21,7 @@
     "jquery": "1.9.1",
     "js-yaml": "^3.10.0",
     "lodash": "^4.17.4",
-    "marked": "^0.3.7",
+    "marked": "^0.3.12",
     "minimist": "^1.2.0",
     "node-sass": "^4.7.2",
     "popper.js": "1.12.9"
