@@ -48,7 +48,7 @@ $ npm run build
 Runs a live-reload development server:
 
 ```
-$ node prepply/dev-server.js --indir ../site --outdir ../out \
+$ node dev-server.js --indir ../site --outdir ../out \
     --config ../site/config.yml --static ../site-assets
 ```
 
