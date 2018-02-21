@@ -6,7 +6,8 @@
   "scripts": {
     "dev-server": "node dev-server --config ../site/config.yml --static ../site-assets",
     "build": "node prepply --config ../site/config.yml",
-    "publish": "bin/publish.sh"
+    "publish": "bin/publish.sh",
+    "blog-image": "node blog-image.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "lodash": "^4.17.4",
     "marked": "^0.3.12",
     "minimist": "^1.2.0",
+    "moment": "^2.20.1",
     "node-sass": "^4.7.2",
     "popper.js": "1.12.9"
   },

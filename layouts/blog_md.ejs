@@ -1,0 +1,9 @@
+---
+layout: post
+title:  <%= subject %>
+date:   <%= date %>
+tags:   [<%= tags.join(", "); %>]
+---
+<% images.forEach(image => { %>
+<a href='<%= image.full%>'><img alt='<%= image.base%>' src='<%= image.scaled %>'/></a>
+<% }); %>
