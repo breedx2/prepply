@@ -24,7 +24,9 @@ async function run(inputOptions){
   console.time('prepply machinery');
   emptyOutputDir(inputOptions);
   const options = _.assign({}, inputOptions, readConfig(inputOptions.config));
-  const templates = layoutsLoader.load(`${__dirname}/../layouts`);
+  const layoutsDir = `${__dirname}/../layouts`;
+  const customLayoutsDir = _.get(options, 'layoutsdir');
+  const templates = layoutsLoader.load([layoutsDir, customLayoutsDir]);
   console.log('templates have been loaded.');
   processInputSiteFiles(options, templates);
   if(!options.noblogs){

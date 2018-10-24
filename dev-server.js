@@ -45,14 +45,14 @@ function setDefaults(args){
   return _.assign(defaults, args);
 }
 
-async function run(args){
+async function run(args, config){
   console.log('Running initial site prep...');
   await machinery(args);
   const reloadServer = startServer(args);
   if(args.nowatch){
     return console.log('--nowatch specified, skipping fs change watching.');
   }
-  watchers.configure(args, reloadServer);
+  watchers.configure(args, reloadServer, config.layoutsdir);
 }
 
 function startServer(args){
@@ -97,6 +97,6 @@ args.outdir = path.resolve(args.outdir || config.outdir);
 args.config = path.resolve(args.config);
 
 console.log(args);
-run(args).then(() => {
+run(args, config).then(() => {
   console.log('dev-server done.');
 });

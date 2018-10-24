@@ -25,7 +25,7 @@ function writeFeed(templates, name, outFile, feed){
 }
 
 function buildFeed(options, sortedBlogs) {
-  const numItems = options.feed.num || DEFAULT_NUM;
+  const numItems = _.get(options, 'feed.num', DEFAULT_NUM);
   return {
     title: _.get(options, 'feed.title'),
     description: _.get(options, 'feed.description'),
@@ -34,10 +34,10 @@ function buildFeed(options, sortedBlogs) {
     logo: _.get(options, 'feed.image'),
     favicon: _.get(options, 'feed.favicon'),
     copyright: _.get(options, 'feed.copyright'),
-    date: sortedBlogs[0].attributes.date,
+    date: _.get(sortedBlogs[0], 'attributes.date', new Date()),
     rssUrl: _.get(options, 'feed.rss-url'),
     atomUrl: _.get(options, 'feed.atom-url'),
-    author: _.get(options, 'feed.author'),
+    author: _.get(options, 'feed.author', {}),
     language: _.get(options, 'feed.language'),
     generator: 'cinco™',
     items: sortedBlogs.slice(0,numItems).map(blog => ({

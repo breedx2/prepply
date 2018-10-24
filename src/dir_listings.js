@@ -4,7 +4,7 @@ const fs = require('fs-extra');
 const filesize = require('filesize');
 
 function dirListings(options, templates){
-  const dirs = options['dir-listings'];
+  const dirs = options['dir-listings'] || [];
   dirs.forEach(dir => buildDir(options, dir, templates));
 }
 

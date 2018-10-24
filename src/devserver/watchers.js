@@ -6,7 +6,7 @@ const path = require('path');
 const machinery = require('./machinery');
 const sasshole = require('../sasshole');
 
-function configure(args, reloadServer) {
+function configure(args, reloadServer, userLayoutsDir = null) {
 
   const reload = reloadClients(reloadServer);
 
@@ -20,7 +20,8 @@ function configure(args, reloadServer) {
 
   //TODO: Don't hard-code a layout dir here (for others to make themes)
   const layoutsDir = path.resolve(__dirname, '../../layouts');
-  chokidar.watch(layoutsDir).on('change', path => {
+  const layouts = [layoutsDir, userLayoutsDir].filter(d => d);
+  chokidar.watch(layouts).on('change', path => {
     console.log(`Change in templates, big rebuild...`);
     machinery(args).then(reload);
   });
