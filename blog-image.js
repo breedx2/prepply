@@ -6,7 +6,7 @@ const _ = require('lodash');
 const moment = require('moment');
 const exec = require('child_process').exec;
 const path = require('path');
-const layouts = require('./src/layouts').load(`${__dirname}/layouts`);
+const layouts = require('./src/layouts').load([`${__dirname}/layouts`]);
 
 const argv = require('minimist')(process.argv.slice(2));
 
