@@ -8,11 +8,11 @@ $('.lightbox a img').each((i, elem) => {
   // fancybox really loves to have this attr on elements for gallery to work.
   // perhaps goofy to jump thru parent, but prevents selecting anchors with no image inside
   $(elem).parent().attr('data-fancybox', 'gallery');
-});
-$('.lightbox a').fancybox({
-  wheel: 'auto',
-  transitionEffect: 'circular',
-  loop: true
+  $(elem).parent().fancybox({
+    wheel: 'auto',
+    transitionEffect: 'circular',
+    loop: true
+  });
 });
 </script>
 
