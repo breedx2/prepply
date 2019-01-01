@@ -3,16 +3,16 @@
 <script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
 
 <script type="text/javascript">
-// console.log($('.lightbox a'));
 $('.lightbox a img').each((i, elem) => {
   // fancybox really loves to have this attr on elements for gallery to work.
   // perhaps goofy to jump thru parent, but prevents selecting anchors with no image inside
   $(elem).parent().attr('data-fancybox', 'gallery');
-  $(elem).parent().fancybox({
-    wheel: 'auto',
-    transitionEffect: 'circular',
-    loop: true
-  });
+});
+// console.log($('.lightbox a[data-fancybox=gallery]'));
+$('.lightbox a[data-fancybox=gallery]').fancybox({
+  wheel: 'auto',
+  transitionEffect: 'circular',
+  loop: true
 });
 </script>
 
