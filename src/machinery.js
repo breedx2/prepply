@@ -45,7 +45,12 @@ function processInputSiteFiles(options, templates){
 
 function processStyles(options){
   console.log('Processing styles...');
-  const scssFiles = glob.sync(`${__dirname}/../scss/custom.scss`, { nodir: true });
+  var scssFiles = glob.sync(`${__dirname}/../scss/custom.scss`, { nodir: true });
+  if(options['extra-scss-dir']){
+    console.log(`  picking up extra scss files in ${options['extra-scss-dir']}`);
+    scssFiles = scssFiles.concat(glob.sync(`${options['extra-scss-dir']}/*.scss`, { nodir: true}))
+  }
+  console.log(scssFiles);
   return sasshole(scssFiles, options.outdir);
 }
 
