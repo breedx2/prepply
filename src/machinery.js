@@ -30,7 +30,11 @@ async function run(inputOptions){
   console.log('templates have been loaded.');
   processInputSiteFiles(options, templates);
   if(!options.noblogs){
-    blog.build(options, templates);
+    const blogopts = Object.assign({}, options);
+    if(options.fullblogs){
+        delete options.files;
+    }
+    blog.build(blogopts, templates);
   }
   processStyles(options);
   processDirectoryListings(options, templates);
