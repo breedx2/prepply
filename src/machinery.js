@@ -31,8 +31,8 @@ async function run(inputOptions){
   processInputSiteFiles(options, templates);
   if(!options.noblogs){
     const blogopts = Object.assign({}, options);
-    if(options.fullblogs){
-        delete options.files;
+    if(blogopts.fullblogs){
+        delete blogopts.files;
     }
     blog.build(blogopts, templates);
   }
