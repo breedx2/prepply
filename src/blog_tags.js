@@ -1,10 +1,8 @@
 'use strict';
 
-const _ = require('lodash');
-const fs = require('fs-extra');
-const blogRenderMap = require('./blog_render_mapper');
-const blogTagIndexer = require('./blog_tag_indexer');
-const writeFile = require('./write_file');
+import blogRenderMap from  './blog_render_mapper.js';
+import blogTagIndexer from './blog_tag_indexer.js';
+import writeFile from './write_file.js';
 
 function build(options, templates, sortedBlogs){
   const mappedTags = blogTagIndexer.index(sortedBlogs);
@@ -18,6 +16,6 @@ function build(options, templates, sortedBlogs){
   });
 }
 
-module.exports = {
+export default {
   build
 };

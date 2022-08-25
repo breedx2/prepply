@@ -1,7 +1,7 @@
 'use strict';
 
-const blogFeeds = require('./blog_feeds');
-const blogTagIndexer = require('./blog_tag_indexer');
+import blogFeeds from './blog_feeds.js';
+import blogTagIndexer from './blog_tag_indexer.js';
 
 function build(options, templates, sortedBlogs){
   console.log('Building tag feeds...');
@@ -15,6 +15,6 @@ function build(options, templates, sortedBlogs){
   });
 }
 
-module.exports = {
+export default {
   build
 };

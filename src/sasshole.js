@@ -1,10 +1,10 @@
 'use strict';
 
-const sass = require('node-sass');
-const fs = require('fs-extra');
-const path = require('path');
+import sass from 'node-sass';
+import fs from 'fs-extra';
+import path from 'path';
 
-function renderFiles(files, outdir){
+export default function renderFiles(files, outdir){
   const cssDir = `${outdir}/css`;
   fs.mkdirsSync(cssDir);
   files.forEach(file => {
@@ -17,5 +17,3 @@ function renderFiles(files, outdir){
     fs.writeFileSync(outFilename, outputData.css.toString());
   });
 }
-
-module.exports = renderFiles;
