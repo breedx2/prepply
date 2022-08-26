@@ -48,7 +48,7 @@ function setDefaults(args){
 async function run(args, config){
   console.log('Running initial site prep...');
   await machinery.run(args);
-  const reloadServer = startServer(args);
+  const reloadServer = await startServer(args);
   if(args.nowatch){
     return console.log('--nowatch specified, skipping fs change watching.');
   }

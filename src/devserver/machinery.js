@@ -1,6 +1,6 @@
 'use strict';
 
-import '../machinery.js';
+import machinery from '../machinery.js';
 
 async function runMachinery(args){
 
