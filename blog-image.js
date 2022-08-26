@@ -8,6 +8,7 @@ import child_process from 'child_process';
 import path from 'path';
 import layouts from './src/layouts.js';
 import scriptDirname from './src/script_dirname.js';
+import readline from 'readline';
 
 const __dirname = scriptDirname(import.meta);
 
@@ -150,7 +151,6 @@ function outFilename(image, now, sized){
 }
 
 async function readLine(prompt){
-  const readline = require('readline');
   return new Promise((fulfill,reject) => {
     const reader = readline.createInterface({
       input: process.stdin,
