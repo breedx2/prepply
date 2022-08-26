@@ -27,7 +27,7 @@
     "minimist": "1.2.6",
     "moment": "2.29.4",
     "node-sass": "7.0.1",
-    "popper.js": "1.14.7"
+    "popper.js": "1.16.1"
   },
   "devDependencies": {
     "chokidar": "3.2.1",
