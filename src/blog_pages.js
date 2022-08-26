@@ -4,8 +4,8 @@ import _ from 'lodash';
 import * as fs from 'fs-extra';
 import * as readAllBlogs from './read_all_blogs.js';
 import * as blogLinks from './blog_links.js';
-import * as blogRenderMap from './blog_render_mapper.js';
-import * as writeFile from './write_file.js';
+import blogRenderMap from './blog_render_mapper.js';
+import writeFile from './write_file.js';
 
 const PAGE_SIZE = 10; //TODO: Push to config...
 

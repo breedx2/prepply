@@ -1,7 +1,7 @@
 'use strict';
 
 import _ from 'lodash';
-import 'marked';
+import * as marked from 'marked';
 import fs from 'fs-extra';
 import blogLinks from './blog_links.js';
 import writeFile from './write_file.js';
@@ -45,7 +45,7 @@ function buildFeed(options, sortedBlogs) {
       selfUrl: blogLinks.permalink(options, blog),
       date: blog.attributes.date,
       tags: blog.attributes.tags,
-      description: marked(blog.body)
+      description: marked.parse(blog.body)
     }))
   };
 }

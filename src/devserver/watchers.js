@@ -5,7 +5,7 @@ import chokidar from 'chokidar';
 import path from 'path';
 import machinery from './machinery.js';
 import sasshole from '../sasshole.js';
-import scriptDirname from './script_dirname.js';
+import scriptDirname from '../script_dirname.js';
 
 const __dirname = scriptDirname(import.meta);
 

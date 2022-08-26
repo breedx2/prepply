@@ -1,7 +1,7 @@
 'use strict';
 
-import * as fs from 'fs-extra';
-import 'filesize';
+import fs from 'fs-extra';
+import filesize from 'filesize';
 
 function dirListings(options, templates){
   const dirs = options['dir-listings'] || [];

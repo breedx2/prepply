@@ -5,6 +5,7 @@ import glob from 'glob';
 import fs from 'fs-extra';
 import frontMatter from 'front-matter';
 import * as marked from 'marked';
+import highlight from 'highlight.js';
 import sasshole from './sasshole.js';
 import layoutsLoader from './layouts.js';
 import blog from './blog.js';
@@ -18,7 +19,7 @@ const __dirname = scriptDirname(import.meta);
 
 marked.setOptions({
   highlight: function (code, lang, callback) {
-    return require('highlight.js').highlightAuto(code).value;
+    return highlight.highlightAuto(code).value;
   }
 });
 
