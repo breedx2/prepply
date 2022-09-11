@@ -26,12 +26,12 @@
     "marked": "4.0.19",
     "minimist": "1.2.6",
     "moment": "2.29.4",
-    "node-sass": "7.0.1",
+    "node-sass": "^7.0.3",
     "popper.js": "1.16.1"
   },
   "devDependencies": {
     "chokidar": "3.2.1",
-    "express": "4.16.2",
+    "express": "4.18.1",
     "express-interceptor": "1.2.0",
     "reload": "3.2.0"
   }
