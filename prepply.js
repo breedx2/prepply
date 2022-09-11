@@ -4,7 +4,6 @@ import _ from 'lodash';
 import 'minimist';
 import path from 'path';
 import machinery from './src/machinery.js'
-import * as yaml from 'js-yaml';
 import readConfig from './src/read_config.js';
 import minimist from 'minimist';
 
