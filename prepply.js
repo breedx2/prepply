@@ -1,11 +1,11 @@
 'use strict';
 
-const _ = require('lodash');
-const minimist = require('minimist');
-const path = require('path');
-const machinery = require('./src/machinery');
-const yaml = require('js-yaml');
-const readConfig = require('./src/read_config');
+import _ from 'lodash';
+import 'minimist';
+import path from 'path';
+import machinery from './src/machinery.js'
+import readConfig from './src/read_config.js';
+import minimist from 'minimist';
 
 // Main app for prepply static generator
 
@@ -31,7 +31,7 @@ async function run(args){
   return await machinery.run(args);
 }
 
-const args = require('minimist')(process.argv.slice(2), {
+const args = minimist(process.argv.slice(2), {
   string: ['indir', 'outdir', 'config'],
   boolean: ['clean'],
   default: {

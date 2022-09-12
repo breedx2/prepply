@@ -1,9 +1,9 @@
 'use strict';
 
-const _ = require('lodash');
-const glob = require('glob');
-const fs = require('fs-extra');
-const frontMatter = require('front-matter');
+import _ from 'lodash';
+import glob from 'glob';
+import fs from 'fs-extra';
+import frontMatter from 'front-matter';
 
 //NOTE: This loads all blog posts into memory, which may be too much if your blog
 //is super duper gigantic.  We load them all to be able to look at the date in
@@ -36,4 +36,6 @@ function readAndParse(files){
   });
 }
 
-module.exports = read;
+export default { 
+  read
+}

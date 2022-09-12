@@ -1,6 +1,6 @@
 'use strict';
 
-const _ = require('lodash');
+import _ from 'lodash';
 
 function index(sortedBlogs){
   const allTags = _.uniq(_.flatMap(sortedBlogs, 'attributes.tags')).filter(x => x);
@@ -10,6 +10,6 @@ function index(sortedBlogs){
   });
 }
 
-module.exports = {
+export default {
   index
 };

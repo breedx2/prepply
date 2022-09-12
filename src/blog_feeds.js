@@ -1,10 +1,10 @@
 'use strict';
 
-const _ = require('lodash');
-const marked = require('marked');
-const fs = require('fs-extra');
-const blogLinks = require('./blog_links');
-const writeFile = require('./write_file');
+import _ from 'lodash';
+import * as marked from 'marked';
+import fs from 'fs-extra';
+import blogLinks from './blog_links.js';
+import writeFile from './write_file.js';
 
 const DEFAULT_NUM = 10;
 
@@ -45,11 +45,11 @@ function buildFeed(options, sortedBlogs) {
       selfUrl: blogLinks.permalink(options, blog),
       date: blog.attributes.date,
       tags: blog.attributes.tags,
-      description: marked(blog.body)
+      description: marked.parse(blog.body)
     }))
   };
 }
 
-module.exports = {
+export default {
   build
 }

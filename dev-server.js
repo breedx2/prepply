@@ -1,17 +1,17 @@
 'use strict';
 
-const _ = require('lodash');
-const minimist = require('minimist');
-const path = require('path');
-const reload = require('reload');
-const express = require('express');
-const http = require('http');
-const chokidar = require('chokidar');
-const fs = require('fs');
-const watchers = require('./src/devserver/watchers');
-const machinery = require('./src/devserver/machinery');
-const reloadInjector = require('./src/devserver/reload-injector');
-const readConfig = require('./src/read_config');
+import _ from 'lodash';
+import minimist from 'minimist';
+import path from 'path';
+import reload from 'reload';
+import express from 'express';
+import http from 'http';
+import chokidar from 'chokidar';
+import fs from 'fs';
+import watchers from './src/devserver/watchers.js';
+import machinery from './src/machinery.js'
+import reloadInjector from './src/devserver/reload-injector.js';
+import readConfig from './src/read_config.js';
 
 // Development server - uses reload for http and runs prepply
 const PORT = 8080;
@@ -47,8 +47,8 @@ function setDefaults(args){
 
 async function run(args, config){
   console.log('Running initial site prep...');
-  await machinery(args);
-  const reloadServer = startServer(args);
+  await machinery.run(args);
+  const reloadServer = await startServer(args);
   if(args.nowatch){
     return console.log('--nowatch specified, skipping fs change watching.');
   }
@@ -84,7 +84,7 @@ function startServer(args){
   return reloadServer;
 }
 
-const inputArgs = require('minimist')(process.argv.slice(2));
+const inputArgs = minimist(process.argv.slice(2));
 const config = readConfig(path.resolve(inputArgs.config));
 if(!argsValid(inputArgs, config)){
   usage();

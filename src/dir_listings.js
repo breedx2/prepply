@@ -1,7 +1,7 @@
 'use strict';
 
-const fs = require('fs-extra');
-const filesize = require('filesize');
+import fs from 'fs-extra';
+import filesize from 'filesize';
 
 function dirListings(options, templates){
   const dirs = options['dir-listings'] || [];
@@ -34,4 +34,4 @@ function buildDir(options, dir, templates){
   console.log(`Wrote ${outfile}`);
 }
 
-module.exports = dirListings;
+export default dirListings;

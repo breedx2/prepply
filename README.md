@@ -19,6 +19,7 @@ Maybe you could find it useful too.
 * blog rss/atom feeds
 * blog tags
 * blog tags atom/rss feeds
+* bare directory index pages
 * support for audio playlists
 * support for fancybox galleries
 * assumes external assets, but supports in-site assets just in case

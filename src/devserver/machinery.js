@@ -1,6 +1,6 @@
 'use strict';
 
-const machinery = require('../machinery');
+import machinery from '../machinery.js';
 
 async function runMachinery(args){
 
@@ -30,4 +30,4 @@ function filesContainsBlogs(options){
   return files.some( file => file.startsWith(blogsDir));
 }
 
-module.exports = runMachinery;
+export default runMachinery;

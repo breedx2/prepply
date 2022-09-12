@@ -1,9 +1,9 @@
 'use strict';
 
-const _ = require('lodash');
-const glob = require('glob');
-const ejs = require('ejs');
-const fs = require('fs');
+import _ from 'lodash';
+import glob from 'glob';
+import ejs from 'ejs';
+import fs from 'fs';
 
 function load(layoutDirs){
 
@@ -34,6 +34,6 @@ function load(layoutDirs){
   };
 }
 
-module.exports = {
+export default {
   load
-};
+}

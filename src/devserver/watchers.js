@@ -1,10 +1,13 @@
 'use strict';
 
-const _ = require('lodash');
-const chokidar = require('chokidar');
-const path = require('path');
-const machinery = require('./machinery');
-const sasshole = require('../sasshole');
+import _ from 'lodash';
+import chokidar from 'chokidar';
+import path from 'path';
+import machinery from './machinery.js';
+import sasshole from '../sasshole.js';
+import scriptDirname from '../script_dirname.js';
+
+const __dirname = scriptDirname(import.meta);
 
 function configure(args, reloadServer, userLayoutsDir = null) {
 
@@ -44,6 +47,6 @@ function reloadClients(reloadServer){
   };
 }
 
-module.exports = {
+export default { 
   configure
-};
+}

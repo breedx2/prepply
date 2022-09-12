@@ -1,22 +1,25 @@
 'use strict';
 
-const _ = require('lodash');
-const glob = require('glob');
-const fs = require('fs-extra');
-const frontMatter = require('front-matter');
-const path = require('path');
-const marked = require('marked');
-const sasshole = require('./sasshole');
-const layoutsLoader = require('./layouts');
-const blog = require('./blog');
-const blogLinks = require('./blog_links');
-const writeFile = require('./write_file');
-const readConfig = require('./read_config');
-const dirListings = require('./dir_listings');
+import _ from 'lodash';
+import glob from 'glob';
+import fs from 'fs-extra';
+import frontMatter from 'front-matter';
+import * as marked from 'marked';
+import highlight from 'highlight.js';
+import sasshole from './sasshole.js';
+import layoutsLoader from './layouts.js';
+import blog from './blog.js';
+import blogLinks from './blog_links.js';
+import writeFile from './write_file.js';
+import readConfig from './read_config.js';
+import dirListings from './dir_listings.js';
+import scriptDirname from './script_dirname.js';
+
+const __dirname = scriptDirname(import.meta);
 
 marked.setOptions({
   highlight: function (code, lang, callback) {
-    return require('highlight.js').highlightAuto(code).value;
+    return highlight.highlightAuto(code).value;
   }
 });
 
@@ -100,7 +103,7 @@ function processMarkdownFile(options, templates, filename){
   const fileData = fs.readFileSync(filename);
   const fm = frontMatter(fileData.toString());
   const layoutName = fm.attributes.layout || 'page';
-  const htmlContent = marked(fm.body);
+  const htmlContent = marked.parse(fm.body);
   const outFile = buildOutfilename(options, fm, filename);
   const selfUrl = fm.attributes.layout == 'post' ?
     blogLinks.permalink(options, { filename: filename}) :
@@ -126,6 +129,6 @@ function buildOutfilename(options, fm, filename){
   return `${options.outdir}${fp}.html`;
 }
 
-module.exports = {
+export default {
   run
 }

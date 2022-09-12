@@ -1,6 +1,6 @@
 'use strict'
 
-const _ = require('lodash');
+import _ from 'lodash';
 
 function permalink(options, blog){
   const filename = blog.filename.replace(options.indir, '').replace(/\.md$/, '');
@@ -8,6 +8,6 @@ function permalink(options, blog){
   return `${_.get(options, 'site-url')}${dateMunged}`;
 }
 
-module.exports = {
+export default {
   permalink
-};
+}

@@ -1,14 +1,20 @@
 'use strict';
 
-const minimist = require('minimist');
-const fs = require('fs-extra');
-const _ = require('lodash');
-const moment = require('moment');
-const exec = require('child_process').exec;
-const path = require('path');
-const layouts = require('./src/layouts').load([`${__dirname}/layouts`]);
+import minimist from 'minimist';
+import fs from 'fs-extra';
+import _ from 'lodash';
+import moment from 'moment';
+import child_process from 'child_process';
+import path from 'path';
+import layouts from './src/layouts.js';
+import scriptDirname from './src/script_dirname.js';
+import readline from 'readline';
 
-const argv = require('minimist')(process.argv.slice(2));
+const __dirname = scriptDirname(import.meta);
+
+const layoutRenderer = layouts.load([`${__dirname}/layouts`]);
+
+const argv = minimist(process.argv.slice(2));
 
 const SITE_DIR = `${__dirname}/../site`;
 const ASSETS = `${__dirname}/../site-assets`;
@@ -74,7 +80,7 @@ async function resizeImage(image, now){
   return new Promise((fulfill,reject) => {
     const cmd = `convert -resize '${RESIZE_WIDTH}x>' '${image}' '${outImage}'`;
     console.log(`Exec: ${cmd}`);
-    exec(cmd, (err, stdout, stderr) => {
+    child_process.exec(cmd, (err, stdout, stderr) => {
       if(err) {
         return reject(err);
       }
@@ -94,7 +100,7 @@ async function rsync(file, target){
   return new Promise((fulfill,reject) => {
     const cmd = `rsync -avv --progress "${file}" "${target}/"`;
     console.log(cmd);
-    exec(cmd, (err, stdout, stderr) => {
+    child_process.exec(cmd, (err, stdout, stderr) => {
       if(err) {
         return reject(err);
       }
@@ -104,7 +110,7 @@ async function rsync(file, target){
 }
 
 function makeTemplate(images, subject, tags, now){
-  const markdown = layouts.render('blog_md', {
+  const markdown = layoutRenderer.render('blog_md', {
     subject: subject,
     tags: tags.split(','),
     date: now.format(),
@@ -145,7 +151,6 @@ function outFilename(image, now, sized){
 }
 
 async function readLine(prompt){
-  const readline = require('readline');
   return new Promise((fulfill,reject) => {
     const reader = readline.createInterface({
       input: process.stdin,

@@ -1,9 +1,9 @@
 'use strict';
 
-const interceptor = require('express-interceptor');
+import interceptor from 'express-interceptor';
 
 // Injects the reload.js script into body of any .html files being served...
-module.exports = interceptor((req, res) => ({
+export default interceptor((req, res) => ({
     // Only HTML responses will be intercepted
     isInterceptable: function(){
       return (res.statusCode < 300) && /text\/html/.test(res.get('Content-Type'));
