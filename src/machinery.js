@@ -1,7 +1,7 @@
 'use strict';
 
 import _ from 'lodash';
-import glob from 'glob';
+import { glob } from 'glob';
 import fs from 'fs-extra';
 import frontMatter from 'front-matter';
 import * as marked from 'marked';
