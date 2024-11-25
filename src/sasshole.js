@@ -1,6 +1,6 @@
 'use strict';
 
-import sass from 'node-sass';
+import sass from 'dart-sass';
 import fs from 'fs-extra';
 import path from 'path';
 

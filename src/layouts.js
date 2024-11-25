@@ -1,7 +1,7 @@
 'use strict';
 
 import _ from 'lodash';
-import glob from 'glob';
+import { glob } from 'glob';
 import ejs from 'ejs';
 import fs from 'fs';
 
