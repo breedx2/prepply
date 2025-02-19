@@ -20,11 +20,14 @@ body {
   background-size: 100%;
 }
 
-a {
-  color: #990f0f;
+// I hate this and it feels wrong.
+a:not(.nav-link, .navbar-brand, .blog-head-card h1 a, .page-item a) {
+  color: #990f0f !important;
+  text-decoration: none !important;
 }
-a:hover {
-  color: #e81717;
+a:not(.nav-link:hover, .navbar-brand:hover, .blog-head-card h1 a:hover):hover {
+  color: #e81717 !important;
+  text-decoration: underline !important;
 }
 
 a.page-link {
@@ -43,7 +46,7 @@ a.page-link:hover {
 
 ul {
   margin-left: 10pt;
-  padding-left: 0;
+  padding-left: 0 !important;
 }
 
 .footer {
@@ -58,8 +61,8 @@ ul {
 
 .navbar-brand {
   font-family: blackmetalwarrior;
-  font-size: 50pt;
-  text-shadow: 3px 3px 2px rgba(100, 0, 0, 0.4);
+  font-size: 50pt !important;
+  text-shadow: 3px 3px 2px rgba(100, 0, 0, 0.5);
   letter-spacing: 2px;
   margin-top: -8pt;
   margin-bottom: -15pt;
